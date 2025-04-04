@@ -1,295 +1,231 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="QQ 技术团队专访：QQ NT 全新重构背后的思考_科学中国" />
+    <meta name="hexo-theme-A4" content="v1.9.7" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
+    <title>GanMocai&#39;s Blog | GanMocai的个人博客</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
 
 
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
 
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
 
-  <meta name="author" content="GMC">
-
-
-
-
-
-<title>QQ 技术团队专访：QQ NT 全新重构背后的思考_科学中国 | GMC&#39;s Hexo</title>
-
-
-
-<link rel="icon" href="/favicon.png">
-
-
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/nprogress/nprogress.css">
-
-
-
-<script src="/lib/jquery.min.js"></script>
-
-
-<script src="/lib/iconify-icon.min.js"></script>
-
-
-<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-<script>
-  tailwind.config = {
-    darkMode: "class",
-  };
-</script>
-
-
-<script src="/lib/nprogress/nprogress.js"></script>
-
-<script>
-  $(document).ready(() => {
-    NProgress.configure({
-      showSpinner: false,
-    });
-    NProgress.start();
-    $("#nprogress .bar").css({
-      background: "#de7441",
-    });
-    $("#nprogress .peg").css({
-      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
-    });
-    $("#nprogress .spinner-icon").css({
-      "border-top-color": "#de7441",
-      "border-left-color": "#de7441",
-    });
-    setTimeout(function () {
-      NProgress.done();
-      $(".fade").removeClass("out");
-    }, 800);
-  });
-</script>
-
-<script>
-  (function () {
-    const prefersDark =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
-    if (setting === "dark" || (prefersDark && setting !== "light"))
-      document.documentElement.classList.toggle("dark", true);
-    let isDark = document.documentElement.classList.contains("dark");
-  })();
-
-  $(document).ready(function () {
-    // init icon
-    const prefersDark =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDark = document.documentElement.classList.contains("dark");
-    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
-
-    function toggleGiscusTheme() {
-      const isDark = document.documentElement.classList.contains("dark");
-      const giscusFrame = document.querySelector("iframe.giscus-frame");
-      if (giscusFrame) {
-        giscusFrame.contentWindow.postMessage(
-          {
-            giscus: {
-              setConfig: {
-                theme: isDark ? "dark" : "light",
-              },
-            },
-          },
-          "https://giscus.app"
-        );
-      }
-    }
-
-    // toggle dark mode
-    function toggleDark() {
-      let isDark = document.documentElement.classList.contains("dark");
-      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
-      isDark = !isDark;
-      document.documentElement.classList.toggle("dark", isDark);
-      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
-      if (prefersDark === isDark) {
-        localStorage.setItem("hexo-color-scheme", "auto");
-      } else {
-        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
-      }
-      toggleGiscusTheme();
-    }
-
-    // listen dark mode change
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", (e) => {
-        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
-        if (setting === "auto") {
-          document.documentElement.classList.toggle("dark", e.matches);
-          $("#theme-icon").attr(
-            "icon",
-            e.matches ? "ri:moon-line" : "ri:sun-line"
-          );
-          toggleGiscusTheme();
-        }
-      });
-
-    $("#toggle-dark").click((event) => {
-      const isAppearanceTransition = document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
-      if (!isAppearanceTransition) {
-        toggleDark()
-        return
-      }
-      const x = event.clientX
-      const y = event.clientY
-      const endRadius = Math.hypot(
-        Math.max(x, innerWidth - x),
-        Math.max(y, innerHeight - y),
-      )
-      const transition = document.startViewTransition(async () => {
-        toggleDark()
-      })
-
-      transition.ready
-        .then(() => {
-          const isDark = document.documentElement.classList.contains("dark")
-          const clipPath = [
-            `circle(0px at ${x}px ${y}px)`,
-            `circle(${endRadius}px at ${x}px ${y}px)`,
-          ]
-          document.documentElement.animate(
-            {
-              clipPath: isDark
-                ? [...clipPath].reverse()
-                : clipPath,
-            },
-            {
-              duration: 400,
-              easing: 'ease-out',
-              pseudoElement: isDark
-                ? '::view-transition-old(root)'
-                : '::view-transition-new(root)',
-            },
-          )
-        })
-    });
-  });
-</script>
-
-
-
+    
 
 <meta name="generator" content="Hexo 6.2.0"></head>
-<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200 relative">
-  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
-  <div class="max-auto">
-    <nav class="flex items-center text-base">
-      <a href="/" class="group">
-        <h2 class="font-medium tracking-tighterp text-l p-2">
-          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="GMC's Hexo" />
-          GMC&#39;s Hexo
-        </h2>
-      </a>
-      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        QQ 技术团队专访：QQ NT 全新重构背后的思考_科学中国
-      </div>
-      <div class="flex-1"></div>
-      <div class="flex items-center gap-3">
-        
-          <a class="hidden sm:flex" href="/archives">Posts</a>
-        
-          <a class="hidden sm:flex" href="/categories">Categories</a>
-        
-          <a class="hidden sm:flex" href="/tags">Tags</a>
-        
-        
-          
-            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/GanMocai">
-              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
-            </a>
-          
-        
-        <a class="w-5 h-5 hidden sm:flex" title="Github" href="rss2.xml">
-          <iconify-icon width="20" icon="ri:rss-line"></iconify-icon>
-        </a>
-        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
-          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
-        </a>
-      </div>
-      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
-        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
-          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
-        </span>
-        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
-          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
-        </span>
-      </div>
-    </nav>
-  </div>
-</header>
-<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
-  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
-    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
-      
-        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="/archives" class="flex h-12 sm:h-auto items-center">Posts</a>
-        </li>
-      
-        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="/categories" class="flex h-12 sm:h-auto items-center">Categories</a>
-        </li>
-      
-        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
-          <a href="/tags" class="flex h-12 sm:h-auto items-center">Tags</a>
-        </li>
-      
-    </ul>
-  </div>
-  <div class="mask bg-black/20 absolute inset-0"></div>
-</div>
+    
+    
 
-  <main class="pt-14">
-    <!-- css -->
-
-<link rel="stylesheet" href="/lib/fancybox/fancybox.min.css">
+    
+    
 
 
-<link rel="stylesheet" href="/lib/tocbot/tocbot.min.css">
 
-<!-- toc -->
+    
 
-<section class="px-6 max-w-prose mx-auto md:px-0">
-  <!-- header -->
-  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
-    <div class="pt-4 md:pt-6">
-      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        QQ 技术团队专访：QQ NT 全新重构背后的思考_科学中国
-      </h1>
-      <div>
-        <section class="flex items-center gap-3 text-sm">
-          <span class="flex items-center gap-1">
-            <iconify-icon width="18" icon="carbon-calendar" ></iconify-icon>
-            <time>2025-03-23</time>
-          </span>
-          <span class="text-gray-400">·</span>
-          <span class="flex items-center gap-1">
-            <iconify-icon width="18" icon="ic:round-access-alarm" ></iconify-icon>
-            <span>17 min</span>
-          </span>
-          <span class="text-gray-400">·</span>
-          <span class="flex items-center gap-1">
-            <iconify-icon width="18" icon="icon-park-outline:font-search" ></iconify-icon>
-            <span>5k words</span>
-          </span>
-          
-        </section>
-      </div>
+    
+    
+
+
+
+
+    
+    
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #e4e4e4 ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">GanMocai&#39;s Blog</a> 
+            <span class="description"></span> 
+        </div>
     </div>
-  </header>
-  <!-- content -->
-  <article class="post-content prose m-auto slide-enter-content dark:prose-invert">
-    <blockquote>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    QQ 技术团队专访：QQ NT 全新重构背后的思考_科学中国
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-03-23</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：5k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：17分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                
+            
+        
+        <div class=".article-gallery"><blockquote>
 <p>本文由 <a target="_blank" rel="noopener" href="http://ksria.com/simpread/">简悦 SimpRead</a> 转码， 原文地址 <a target="_blank" rel="noopener" href="http://science.china.com.cn/2023-08/11/content_42480503.htm">science.china.com.cn</a></p>
 </blockquote>
 <p>在瞬息万变的互联网行业中, 年过二十四的 QQ 堪称超长寿的产品, 见证了中国互联网崛起的完整历程。然而, 如今这个元老级产品经历了一次从内到外彻底的重构。</p>
@@ -300,7 +236,7 @@
 <p>三端不同代码, 老产品历史包袱, 加上移动时代研发人员的转型, 导致桌面 QQ 维护成本很高。QQ 技术团队介绍, 拿之前的桌面 QQ 为例, WindowsQQ 以前的 UI 框架用的是腾讯自研的 GF 框架, 10 多年了, GF 这个框架文档还不全, 新加入这个项目的团队人员, 要基于这个基础框架去做一些事情, 是效率很低的一件事情, 慢慢的就没有人愿意去用这个框架了。简而言之, 就是技术债。</p>
 <p>旧版的桌面端 QQ,Windows 的功能最丰富, macOS 次之, Linux 功能非常简洁。比如 “屏幕共享” 这个功能, 移动端有, Windows 端有, 但是 macOS 端是没有的。那用户就会遇到一个问题, 像 macOS 端无法与其它端 QQ 用户一起来使用这个功能。</p>
 <p>“多端不统一不利于用户对于 QQ 的统一认知。我们这次的架构升级就是想尽量通过一套核心代码去拉平所有平台的体验, 让它具有更好的可维护性和可扩展性, 让桌面 QQ 能够更好地迭代产品交互和功能, 升级用户体验, 再次焕发生长的生命力。”</p>
-<p><img src="http://science.china.com.cn/images/2023-08/11/9ee3b349-5f52-4c48-b16f-c97fa60643bf.png" alt=""></p>
+<p><a target="_blank" rel="noopener" href="http://science.china.com.cn/images/2023-08/11/9ee3b349-5f52-4c48-b16f-c97fa60643bf.png" class="gallery-item" style="box-shadow: none;"> <img src="http://science.china.com.cn/images/2023-08/11/9ee3b349-5f52-4c48-b16f-c97fa60643bf.png" alt=""></a></p>
 <p>于是 QQ NT 项目是在 2022 年 3 月份正式启动, macOS QQ 在 6 月份开始发布内测, 9 月份正式上架了 App Store, 迭代了几个版本之后, QQ 团队就同步开发 Linux。在 2022 年, QQ 发布了新的 macOS 和 Linux 版本, 包括 QQ 后台其实也做了很大的改变和重构, 核心系统做了全新重写, 云原生成熟度也得到了很大的提升。从 2023 年开始, QQ 团队聚焦做 Windows 端的开发, 在 3 月底就开始内测, 7 月初上架官网。同时移动端 QQ NT 也在 7 月初完成了核心系统的重写和全量升级。在目前全新的框架设计下, 无论是核心系统、功能迭代还是设计语言上, 都可以尽可能地 “原子化”, 来让 QQ 后续更好地迭代功能。</p>
 <p><strong>重构之路: 最大的压力与挑战源自何处?</strong></p>
 <p>“QQ 的重构其实是两方面的重构: 一个是面向复杂业务的梳理重构, 一个面向工程技术债的全新技术重构, 重构之路也是两者相互伴随的过程。”</p>
@@ -317,7 +253,7 @@
 <p>至于微软的 Webview2, 从本质上讲, Webview2 和 Electron 并没有太大的区别, 只是相对在其中打包了一些微软自身的优化措施, 其他方面也不是很完善, 而且还无法跨平台。虽然内存方面相较于 Electron 做了更多的优化。但据了解, 比如微软 Teams 也没有完全切到 Webview2。并且由于它没有开源, 因此也没有办法基于 Webview2 做定制优化。</p>
 <p>包括 Flutter,QQ 团队表示他们当时也有过调研。他们放弃的一个原因是 Flutter 在桌面端的完善程度并不高, 也担心标准化的问题。虽然当前 Flutter 非常流行, 但谁也说不好这是不是 “2015 年的 React Native”。大家担心随着时间推移, 这套技术可能会失去维护支持, 因为本身 Google 使用 Flutter 的占比也比较小。</p>
 <p>“虽然它很热, 但我们历史上踩过了很多很多非标准化的坑, 一旦某个技术栈热度一过、维护力度不够, 它就会成为全新的负债, 做选型时必然也是避免再有类似经历。”</p>
-<p><img src="http://science.china.com.cn/images/2023-08/11/7506a9b3-de20-4fbd-b359-e4dcf4808622.png" alt=""></p>
+<p><a target="_blank" rel="noopener" href="http://science.china.com.cn/images/2023-08/11/7506a9b3-de20-4fbd-b359-e4dcf4808622.png" class="gallery-item" style="box-shadow: none;"> <img src="http://science.china.com.cn/images/2023-08/11/7506a9b3-de20-4fbd-b359-e4dcf4808622.png" alt=""></a></p>
 <p>至于为什么最后选择 Electron,QQ 技术团队表示主要是基于以下几个考量:</p>
 <p>首先最看重的是框架成熟度和技术栈的标准化。Electron 基于 Web 技术栈, 有足够低的上手和使用成本, 不需要为了使用框架本身, 还需要投入额外巨大人力成本去做基建和周边工具链的建设, 以前在 RN、Flutter 的实践上都有类似的情况。而使用 Electron, 现有的 Web 前端的大部分基建都可以直接复用, 而且使用 Web 开发 UI 的效率, 在主流技术栈里算是很高的了。至于迭代效率我觉得从新版桌面 QQ 功能的迭代速度就可以证明, 这放在以前是完全办不到的。另外由于 Web 技术栈是标准化的, 假如 Electron 修改开源协议或者要闭源了, 他们也能很方便的去写出一套类似的框架。只不过现在已经有开源的了, 没必要再去重复建设一个。而且随着 Web 标准长久发展, Web 技术栈也不会有大的问题, 而且还会越来越好。</p>
 <p>其次是技术经验及人才储备, 技术选型是否适合当前团队也是一个很重要的考虑点, 团队是否有相关的技术积累, 是否有人才储备来持续投入这个技术栈。Qt 的确在性能上是一个很好的选择, 但目前团队对 Qt 没有太多积累, 基建基本没有, 而且相关人才其实比较匮乏, 招聘就更难了。而当前 QQ 技术团队 Web 前端团队还是有比较多的积累, 在 QQ 频道项目中, 也完整验证了 Electron 的技术可行性。</p>
@@ -330,7 +266,7 @@
 <p>综合来看, 对内存的看法其实不完全是 Electron 的技术框架所导致的, 更多的是门槛上、开发思维上, 导致内存没有得到很好的关注和优化。其实最简单的 Electron 应用大概也就只有几十兆的内存占用。因为前端原本更多还是停留在开发即用即走的 Web 站点, 很少实现一个超大客户端, 缺乏控制内存的经验, 所以面对 QQ 这么大一个产品的时候, 你就必须非常在意内存的使用和管控。</p>
 <p>至于优化内存的突破口, 可以说是从各个层面: 从消息的链路中的每条消息的收发上, 数据是怎么管理, 包括像窗口及会话的管理, 都得精打细算, 也会做一些数据本地化和一些机制的按需加载, 包括渲染上他们也提出一个根本的原则:“要做到所见才占用”, 既我们看到的内容才占用这一部分内存, 没看到和用不到的任何场景的内存就不应该再占用, 通过各种方式来去让内存达到一个设定的目标。</p>
 <p>他们也使用了不同维度的内存分析工具, 从 V8 引擎到进程, 再到整个应用程序, 打通整个链路进行多角度的细节分析, 以此来定位内存使用的瓶颈。之后采取一系列的针对性优化策略, 包括缓存策略、按需加载、优雅降级等, 同时使用线上监控、自动化测试手段, 包括借助开发框架、工具建设、代码审查等, 来阻止性能退化。(更多细节可以参看技术文章: 新 QQ NT 桌面版如何实现内存优化探索?)</p>
-<p><img src="http://science.china.com.cn/images/2023-08/11/491519a9-494a-4896-b573-aa216270a4c2.png" alt=""></p>
+<p><a target="_blank" rel="noopener" href="http://science.china.com.cn/images/2023-08/11/491519a9-494a-4896-b573-aa216270a4c2.png" class="gallery-item" style="box-shadow: none;"> <img src="http://science.china.com.cn/images/2023-08/11/491519a9-494a-4896-b573-aa216270a4c2.png" alt=""></a></p>
 <p>经过一系列组合优化之后, QQ 的内存在长时间挂机的条件下, 平均稳定在 220M 左右。“现在优化还是不错的, 比老版本要好很多。我们认为这个难题还是可以被很好的攻克, 内存并不是大家认为的这么不可控, 但是也需要团队去花费相当精力去探索和实践, 才能去把内存控制到一个比较理想的状态。”</p>
 <p><strong>未来展望: QQ 的前端发展规划是怎样的?</strong></p>
 <p>目前 QQ 的前端团队作为一个公线团队, 不仅负责桌面 QQ 的研发, 还有 QQ 基础运营、QQ 空间以及基于 QQ 生态的创新项目研发, 有比较多的线上项目的开发与维护和内部研效工具的建设。涉及的技术栈, 包括 H5、Electron、Cocos、小程序、WebGL、WebAssembly、WebRTC 等。他们也表示会继续夯实这些技术, 同时也不断地打破立下的性能目标, 希望让桌面 QQ 覆盖更多平台。</p>
@@ -342,209 +278,185 @@
 <p>至此, QQ 实现了多个系统平台之间架构的统一。而团队的未来规划还是不断地打破性能目标, 并覆盖更多平台, 同时探索更多提升研发效率的办法, 加快研发速度。</p>
 <p>腾讯 QQ 用跨平台 Electron 取代之前原生应用程序的开发模式, 这一举动引发的反响确实巨大。但我们也能看出, 不同于小型产品团队, 在大公司里具有一定规模的产品组织架构之下, 快速满足用户需求, 并逐渐需要为第三、第四乃至第五种运行平台提供支持时, 保持一致性和协调性并不是想象中的那么容易。而缓慢而低效, 最终会令你输掉比赛。</p>
 <p>不管使用什么跨平台开发框架, 都要去选择最合适自己团队的, 也因此在 Web 标准技术栈上有丰富积累的 QQ 团队才会选择 Electron。并且我们认为没有人真正讨厌 Electron, 只是我们对 QQ, 对国内 App 寄予了非常高的期盼。</p>
-
-  </article>
-  <!-- tag -->
-  <div class="mt-12 pt-6 border-t border-gray-200">
-    
-      
-        <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
-          <a href="/tags/QQ/">QQ</a>
-        </span>
-      
-    
-  </div>
-  <!-- prev and next -->
-  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
-    <div>
-      
-    </div>
-    <div>
-      
-        <a href="/2025/03/01/%E4%B8%80%E4%BB%BD%E7%94%A8%E4%BA%8Eword%E4%B8%AD%E5%B7%B2%E7%BB%8F%E7%BB%99%E5%9B%BE%E6%89%8B%E5%8A%A8%E6%96%87%E6%9C%AC%E7%BC%96%E5%8F%B7%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%A4%E5%8F%89%E5%BC%95%E7%94%A8%E7%9A%84VBA%E4%BB%A3%E7%A0%81/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          一份用于word中已经给图手动文本编号转换为交叉引用的VBA代码
-          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
-        </a>
-      
-    </div>
-  </div>
-  <!-- comment -->
-  <div class="article-comments mt-12">
-    
-
-  </div>
-</section>
-<!-- js inspect -->
-
-<script src="/lib/clipboard.min.js"></script>
-
-
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX","TeX"],
-        linebreaks: { automatic:true },
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-        processEscapes: true,
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-        Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-  });
-</script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-      for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-      }
-  });
-</script>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-<script>
-  $(document).ready(() => {
-    const maraidConfig = {
-      theme: "default",
-      logLevel: 3,
-      flowchart: { curve: "linear" },
-      gantt: { axisFormat: "%m/%d/%Y" },
-      sequence: { actorMargin: 50 },
-    };
-    mermaid.initialize(maraidConfig);
-  });
-</script>
-
-
-
-<script src="/lib/fancybox/fancybox.umd.min.js"></script>
-
-<script>
-  $(document).ready(() => {
-    $('.post-content').each(function(i){
-      $(this).find('img').each(function(){
-        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
-        var alt = this.alt;
-        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
-        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
-      });
-      $(this).find('.fancybox').each(function(){
-        $(this).attr('rel', 'article' + i);
-      });
-    });
-
-    Fancybox.bind('[data-fancybox="gallery"]', {
-        // options
-    })
-  })
-</script>
-
-<!-- tocbot begin -->
-
-<script src="/lib/tocbot/tocbot.min.js"></script>
-
-<script>
-  $(document).ready(() => {
-      tocbot.init({
-        // Where to render the table of contents.
-        tocSelector: '.post-toc',
-        // Where to grab the headings to build the table of contents.
-        contentSelector: '.post-content',
-        // Which headings to grab inside of the contentSelector element.
-        headingSelector: 'h1, h2, h3',
-        // For headings inside relative or absolute positioned containers within content.
-        hasInnerContainers: true,
-    });
-  })
-</script>
-<!-- tocbot end -->
-
-
-  </main>
-  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
-  <!-- busuanzi -->
-  
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<!-- Busuanzi Analytics -->
-<div class="flex items-center gap-2">
-  <span>Visitors</span>
-  <span id="busuanzi_value_site_uv"></span>
-  <span>Page Views</span>
-  <span id="busuanzi_value_site_pv"></span>
 </div>
-<!-- End Busuanzi Analytics -->
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2025-03-23</span>
+            
+                <span>该篇文章被 GanMocai</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/QQ/'>
+                            QQ
+                        </a>
+                    
+                </span>
+             
+             
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/03/01/%E4%B8%80%E4%BB%BD%E7%94%A8%E4%BA%8Eword%E4%B8%AD%E5%B7%B2%E7%BB%8F%E7%BB%99%E5%9B%BE%E6%89%8B%E5%8A%A8%E6%96%87%E6%9C%AC%E7%BC%96%E5%8F%B7%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%A4%E5%8F%89%E5%BC%95%E7%94%A8%E7%9A%84VBA%E4%BB%A3%E7%A0%81/">一份用于word中已经给图手动文本编号转换为交叉引用的VBA代码</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
 
 
-  <!-- copyright -->
-  <div class="flex items-center gap-2">
-    <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" style="color: inherit;">CC BY-NC-SA 4.0</a>
-    <span>© 2022</span>
-    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
-    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
-  </div>
-  <!-- powered by -->
-  <div class="flex items-center gap-2">
-    <span>Powered by</span>
-    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
-    <span>&</span>
-    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
-  </div>
 
-</footer>
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2022-2025 China 
 
-  <div class="back-to-top box-border fixed right-6 z-1024 -bottom-20 rounded py-1 px-1 bg-slate-900 opacity-60 text-white cursor-pointer text-center dark:bg-slate-600">
-    <span class="flex justify-center items-center text-sm">
-      <iconify-icon width="18" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
-      <span id="scrollpercent"><span>0</span> %</span>
-    </span>
-  </div>
-  
-<script src="/js/main.js"></script>
+            
+                
+
+            
+        </span>
+       
+    
+</div>
 
 
-  <script>
-    $(document).ready(function () {
-      const mapleCount = "10";
-      const speed = "0.5";
-      const mapleEl = document.getElementById("maple");
-      const maples = Array.from({ length: mapleCount }).map(() => {
-        const maple = document.createElement("div");
-        const scale = Math.random() * 0.5 + 0.5;
-        const offset = Math.random() * 2 - 1;
-        const x = Math.random() * mapleEl.clientWidth;
-        const y = -Math.random() * mapleEl.clientHeight;
-        const duration = 10 / speed;
-        const delay = -duration;
-        maple.className = "maple";
-        maple.style.width = `${24 * scale}px`;
-        maple.style.height = `${24 * scale}px`;
-        maple.style.left = `${x}px`;
-        maple.style.top = `${y}px`;
-        maple.style.setProperty("--maple-fall-offset", offset);
-        maple.style.setProperty("--maple-fall-height", `${Math.abs(y) + mapleEl.clientHeight}px`);
-        maple.style.animation = `fall ${duration}s linear infinite`;
-        maple.style.animationDelay = `${delay}s`;
-        mapleEl.appendChild(maple)
-        return maple
-      })
-    });
-  </script>
-  
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
 
 
-  <div class="fixed top-0 bottom-0 left-0 right-0 pointer-events-none print:hidden" id="maple"></div>
-</body>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
 </html>
