@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="一份批量导出PPT备注为word的VBA代码.md" />
+    <meta name="description" content="吐槽长城防火墙" />
     <meta name="hexo-theme-A4" content="v1.9.7" />
     <link rel="alternate icon" type="image/webp" href="/img/favicon.png">
     <title>GanMocai&#39;s Blog | GanMocai的个人博客</title>
@@ -347,7 +347,7 @@
         
             
                 <div class="post-main-title" style="text-align: center;">
-                    一份批量导出PPT备注为word的VBA代码.md
+                    吐槽长城防火墙
                 </div>
             
         
@@ -360,19 +360,19 @@
             <div class="post-head-meta-center">
         
                 
-                    <span>最近更新：2025-05-22</span> 
+                    <span>最近更新：2024-01-17</span> 
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：1.1k</span>
+                     <span>字数总计：387</span>
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                    <span>阅读估时：4分钟</span>
+                    <span>阅读估时：1分钟</span>
                 
                 
                     
@@ -388,160 +388,19 @@
     <div class="post-md">
         
             
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#PowerPoint-%E5%A4%87%E6%B3%A8%E5%AF%BC%E5%87%BA-%E7%9A%84-VBA-%E8%84%9A%E6%9C%AC"><span class="post-toc-text">PowerPoint 备注导出 的 VBA 脚本</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8A%9F%E8%83%BD"><span class="post-toc-text">功能</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="post-toc-text">代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4"><span class="post-toc-text">使用步骤</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="post-toc-text">注意事项</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BC%AA%E4%BB%A3%E7%A0%81"><span class="post-toc-text">伪代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="post-toc-text">输出格式</span></a></li></ol></li></ol>
+                
             
         
-        <div class=".article-gallery"><h1 id="PowerPoint-备注导出-的-VBA-脚本"><a href="#PowerPoint-备注导出-的-VBA-脚本" class="headerlink" title="PowerPoint 备注导出 的 VBA 脚本"></a>PowerPoint 备注导出 的 VBA 脚本</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>此 VBA 脚本（<code>ExportNotesToWord.vba</code>）用于从 Microsoft PowerPoint 演示文稿中批量提取幻灯片备注，并将其整理为格式化的 Microsoft Word 文档。每个备注前会标注对应的幻灯片编号，排版清晰，适合需要汇总和整理 PPT 备注的场景。</p>
-<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ul>
-<li>提取所有幻灯片的备注内容。</li>
-<li>在 Word 文档中以“幻灯片 X:”为标题标注备注来源。</li>
-<li>自动将输出保存为 Word 文档（<code>PPT_Notes.docx</code>），位于 PPT 文件同一目录。</li>
-<li>不会修改原始 PPT 文件，仅执行只读操作。</li>
-</ul>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class="line-numbers language-visual" data-language="visual"><div class="caption"><span>basic</span></div><code class="language-visual">Sub ExportNotesToWord()
-    Dim pptApp As PowerPoint.Application
-    Dim pres As PowerPoint.Presentation
-    Dim sld As PowerPoint.Slide
-    Dim wdApp As Object
-    Dim wdDoc As Object
-    Dim i As Integer
-    
-    &#39; 打开当前演示文稿
-    Set pptApp &#x3D; Application
-    Set pres &#x3D; pptApp.ActivePresentation
-    
-    &#39; 创建 Word 应用程序
-    On Error Resume Next
-    Set wdApp &#x3D; GetObject(, &quot;Word.Application&quot;)
-    If wdApp Is Nothing Then
-        Set wdApp &#x3D; CreateObject(&quot;Word.Application&quot;)
-    End If
-    wdApp.Visible &#x3D; True
-    Set wdDoc &#x3D; wdApp.Documents.Add
-    
-    &#39; 设置 Word 文档标题
-    wdDoc.Paragraphs.Add
-    wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Size &#x3D; 16
-    wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Bold &#x3D; True
-    wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Text &#x3D; &quot;PowerPoint 备注导出&quot; &amp; vbCrLf
-    
-    &#39; 遍历每页幻灯片
-    For Each sld In pres.Slides
-        i &#x3D; sld.SlideIndex
-        If Len(sld.NotesPage.Shapes.Placeholders(2).TextFrame.TextRange.Text) &gt; 0 Then
-            &#39; 添加幻灯片编号
-            wdDoc.Paragraphs.Add
-            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Size &#x3D; 12
-            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Bold &#x3D; True
-            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Text &#x3D; &quot;幻灯片 &quot; &amp; i &amp; &quot;:&quot; &amp; vbCrLf
-            
-            &#39; 添加备注内容
-            wdDoc.Paragraphs.Add
-            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Size &#x3D; 10
-            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Bold &#x3D; False
-            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Text &#x3D; sld.NotesPage.Shapes.Placeholders(2).TextFrame.TextRange.Text &amp; vbCrLf
-            
-        End If
-    Next sld
-    
-    &#39; 保存 Word 文档
-    wdDoc.SaveAs (pres.Path &amp; &quot;\PPT_Notes.docx&quot;)
-    wdDoc.Close
-    wdApp.Quit
-    
-    &#39; 清理对象
-    Set wdDoc &#x3D; Nothing
-    Set wdApp &#x3D; Nothing
-    Set pres &#x3D; Nothing
-    Set pptApp &#x3D; Nothing
-    
-    MsgBox &quot;备注已成功导出到 &quot; &amp; pres.Path &amp; &quot;\PPT_Notes.docx&quot;
-End Sub<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><ol>
-<li><p>打开 PowerPoint</p>
-<p> ：</p>
-<ul>
-<li>确保目标 PPT 文件已打开。</li>
-<li>文件必须已保存到本地磁盘（未保存的新文件会导致路径错误）。</li>
-</ul>
-</li>
-<li><p>启用 VBA 宏</p>
-<p> ：</p>
-<ul>
-<li>按 <code>Alt + F11</code> 打开 VBA 编辑器。</li>
-<li>在 PowerPoint 中启用宏（“文件” &gt; “信息” &gt; “启用内容”）。</li>
-</ul>
-</li>
-<li><p>插入脚本</p>
-<p> ：</p>
-<ul>
-<li>在 VBA 编辑器中，点击“插入” &gt; “模块”。</li>
-<li>复制并粘贴提供的 VBA 代码（见原始脚本）。</li>
-</ul>
-</li>
-<li><p>运行脚本</p>
-<p> ：</p>
-<ul>
-<li>在 VBA 编辑器中按 <code>F5</code> 运行脚本，或在 PowerPoint 中添加按钮运行。</li>
-<li>脚本将生成 <code>PPT_Notes.docx</code> 文件，位于 PPT 文件所在目录。</li>
-</ul>
-</li>
-<li><p>检查输出</p>
-<p> ：</p>
-<ul>
-<li>打开生成的 Word 文档，确认备注内容和排版是否正确。</li>
-</ul>
-</li>
-</ol>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
-<li><strong>备份文件</strong>：运行脚本前，建议备份 PPT 文件，以防意外情况（如 PowerPoint 崩溃）。</li>
-<li><strong>依赖 Microsoft Word</strong>：脚本需要系统中安装 Microsoft Word。如果未安装 Word，可修改脚本输出为文本文件（需要额外调整代码）。</li>
-<li><strong>文件路径</strong>：确保 PPT 文件已保存，且所在文件夹有写入权限，否则可能无法生成 Word 文档。</li>
-<li><strong>备注为空</strong>：如果某页幻灯片没有备注，脚本会自动跳过该页。</li>
-<li><strong>路径编码</strong>：避免 PPT 文件路径包含特殊字符（特别是非英文字符），可能导致路径解析错误。</li>
-<li><strong>宏安全性</strong>：仅运行来自可信来源的脚本，避免潜在安全风险。</li>
-<li><strong>测试环境</strong>：建议先用小型 PPT 文件测试脚本，确保输出符合预期。</li>
-</ul>
-<h2 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h2><p>以下是脚本的核心逻辑，精简为伪代码形式：</p>
-<pre class="line-numbers language-none"><code class="language-none">初始化 PowerPoint 应用程序和当前演示文稿
-创建新的 Word 文档
-在 Word 文档中添加标题 &quot;PowerPoint 备注导出&quot;
-
-对于每页幻灯片：
-    获取幻灯片编号
-    如果幻灯片有备注：
-        在 Word 文档中添加标题 &quot;幻灯片 X:&quot;
-        设置标题和内容的字体样式（大小、加粗等）
-        添加备注内容
-
-将 Word 文档保存为 &quot;PPT_Notes.docx&quot;（位于 PPT 文件目录）
-关闭 Word 文档和应用程序
-显示完成提示
-清理对象<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><ul>
-<li><p><strong>文件</strong>：<code>PPT_Notes.docx</code></p>
-</li>
-<li><p>结构</p>
-<p>  ：</p>
-<ul>
-<li>标题：<code>PowerPoint 备注导出</code>（16 号字体，加粗）</li>
-<li>每页备注：<ul>
-<li>标题：<code>幻灯片 X:</code>（12 号字体，加粗）</li>
-<li>内容：备注文本（10 号字体，常规）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>位置</strong>：与 PPT 文件同一目录</p>
-</li>
-</ul>
+        <div class=".article-gallery"><p>回家后，没法裸连 github ，导致出现修改博客样式后部署出了一些问题，通过 google 又花了几十分钟解决，但可能解决时又引入新的隐患……故而想来吐槽一下：<strong>中国未免太不自信了！</strong>（用typora编辑时又出问题了，不过有上一次的经验，立即进入源代码模式编辑，也不耽误吐槽）</p>
+<p><strong>就我目前使用 github 的经历，我不认为封禁 github 有带来什么实际的好处。</strong>为了扶持本土的码云？别逗了，做得太差劲了，不太能成为百度/腾讯之流【本意是好的，可惜没能妥善考虑执行过程，不管本意如何，这一招做得不行】。预防颠覆？倒也没必要吧， github 上的更偏向技术，当然，也有一些历史存档，但因此而封禁<strong>未免太不自信</strong>！【未免太不自信，中国目前的太多操作如此：在封号禁言方面做了很多——和外交部发言人批评的对象倒是一般黑了。当然，也是因为中国共产党明白话语权的重要性以及“人民群众的眼睛是雪亮的”只是一句政治口号罢了……】</p>
+<p>（话说我是真不行，科二练得太差了，寒假可能过不了，练的时候脑子不会动，脑子动的时候又回家了，没法练习-复盘-练习这样循环。说到底，这和我动手能力差同出一辙。）</p>
 </div>
     </div>
 
     <div class="post-meta">
         <i>
         
-            <span>2025-05-22</span>
+            <span>2024-01-17</span>
             
                 <span>该篇文章被 GanMocai</span>
             
@@ -549,17 +408,30 @@ End Sub<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
                 <span>打上标签:
                     
                     
-                        <a href='/tags/VBA/'>
-                            VBA
+                        <a href='/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/'>
+                            碎碎念
                         </a>
                     
-                        <a href='/tags/powerpoint/'>
-                            powerpoint
+                        <a href='/tags/%E5%8D%9A%E5%AE%A2/'>
+                            博客
+                        </a>
+                    
+                        <a href='/tags/%E6%B6%89%E6%94%BF/'>
+                            涉政
                         </a>
                     
                 </span>
              
              
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%9A%8F%E6%83%B3/'>
+                            随想
+                        </a>
+                    
+                </span>
+            
         
         </i>
     </div>
@@ -571,11 +443,11 @@ End Sub<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
     
             <div class="post-footer-pre-next">
                 
-                    <span>上一篇：<a href='/2025/06/04/%E4%B8%AA%E4%BA%BA%E5%BC%80%E5%8F%91-Git-%E8%A7%84%E8%8C%83/'>个人开发 Git 规范</a></span>
+                    <span>上一篇：<a href='/2024/01/17/%E6%AE%8B%E7%BC%BA%E7%AC%94%E8%AE%B0%E4%B9%8B%E9%A9%AC%E5%8E%9F%E5%8D%8E%E5%B8%88%E5%A4%A7/'>残缺笔记之马原华师大</a></span>
                 
 
                 
-                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/03/23/QQ%20%E6%8A%80%E6%9C%AF%E5%9B%A2%E9%98%9F%E4%B8%93%E8%AE%BF%EF%BC%9AQQ%20NT%20%E5%85%A8%E6%96%B0%E9%87%8D%E6%9E%84%E8%83%8C%E5%90%8E%E7%9A%84%E6%80%9D%E8%80%83_%E7%A7%91%E5%AD%A6%E4%B8%AD%E5%9B%BD/">QQ 技术团队专访：QQ NT 全新重构背后的思考_科学中国</a>
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2024/01/12/%E6%88%91%E5%9B%9E%E6%9D%A5%E4%BA%86/">我回来了</a>
                     </span>
                 
             </div>

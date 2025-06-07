@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="Github 学生认证踩坑" />
+    <meta name="description" content="一份批量导出powerpoint备注为word的VBA代码" />
     <meta name="hexo-theme-A4" content="v1.9.7" />
     <link rel="alternate icon" type="image/webp" href="/img/favicon.png">
     <title>GanMocai&#39;s Blog | GanMocai的个人博客</title>
@@ -347,7 +347,7 @@
         
             
                 <div class="post-main-title" style="text-align: center;">
-                    Github 学生认证踩坑
+                    一份批量导出powerpoint备注为word的VBA代码
                 </div>
             
         
@@ -360,19 +360,19 @@
             <div class="post-head-meta-center">
         
                 
-                    <span>最近更新：2025-02-28</span> 
+                    <span>最近更新：2025-05-22</span> 
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：855</span>
+                     <span>字数总计：1.1k</span>
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                    <span>阅读估时：3分钟</span>
+                    <span>阅读估时：4分钟</span>
                 
                 
                     
@@ -388,46 +388,151 @@
     <div class="post-md">
         
             
-                
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#PowerPoint-%E5%A4%87%E6%B3%A8%E5%AF%BC%E5%87%BA-%E7%9A%84-VBA-%E8%84%9A%E6%9C%AC"><span class="post-toc-text">PowerPoint 备注导出 的 VBA 脚本</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8A%9F%E8%83%BD"><span class="post-toc-text">功能</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="post-toc-text">代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4"><span class="post-toc-text">使用步骤</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="post-toc-text">注意事项</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BC%AA%E4%BB%A3%E7%A0%81"><span class="post-toc-text">伪代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="post-toc-text">输出格式</span></a></li></ol></li></ol>
             
         
-        <div class=".article-gallery"><p>第一次找的那个教程是bing搜索结果中首个知乎文章 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/578964972">Github学生认证及学生包保姆级申请指南 - 知乎</a>，但根本没提多因素认证的事情，同时也使用了代理工具，被秒拒。我在第二次修改的时候给他点了个反对（其实也应该给bing也点一个负面反馈），很离谱啊朋友们。</p>
-<blockquote>
-<ul>
-<li>You must configure your browser and operating system to allow location access. You may not use a VPN. If you believe that our information about your school is incomplete or incorrect, then please select ‘My selected school has incorrect or incomplete information e.g. domains or campus location’ option when submitting a GitHub Education support ticket.</li>
-<li>Please secure your GitHub account with <a target="_blank" rel="noopener" href="https://github.com/settings/security">two-factor authentication</a>. You may need to log out and log back in to GitHub before reapplying.</li>
-<li>Please complete your <a target="_blank" rel="noopener" href="https://github.com/settings/billing/payment_information">GitHub billing information</a> with your full name exactly as it appears in your academic affiliation document. You do not have to add a payment method. You may need to log out and log back in to GitHub before reapplying. If you have only a single legal name, enter it in both the first and last name fields.</li>
-<li>You are unlikely to be verified until you have completed your <a target="_blank" rel="noopener" href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/personalizing-your-profile">GitHub user profile</a> with your full name exactly as it appears in your academic affiliation document. Please do not use a variation of your name or a nickname. Once you have updated your profile information log out and log back into GitHub before re-applying.</li>
+        <div class=".article-gallery"><h1 id="PowerPoint-备注导出-的-VBA-脚本"><a href="#PowerPoint-备注导出-的-VBA-脚本" class="headerlink" title="PowerPoint 备注导出 的 VBA 脚本"></a>PowerPoint 备注导出 的 VBA 脚本</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>此 VBA 脚本（<code>ExportNotesToWord.vba</code>）用于从 Microsoft PowerPoint 演示文稿中批量提取幻灯片备注，并将其整理为格式化的 Microsoft Word 文档。每个备注前会标注对应的幻灯片编号，排版清晰，适合需要汇总和整理 PPT 备注的场景。</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ul>
+<li>提取所有幻灯片的备注内容。</li>
+<li>在 Word 文档中以“幻灯片 X:”为标题标注备注来源。</li>
+<li>自动将输出保存为 Word 文档（<code>PPT_Notes.docx</code>），位于 PPT 文件同一目录。</li>
+<li>不会修改原始 PPT 文件，仅执行只读操作。</li>
 </ul>
-</blockquote>
-<p>第二次是按照第一次的拒绝建议补充内容，修改个人简介等，但因为学生证没在旁边用手机放照片被识别出来，同时继续使用了代理工具，也被秒拒。【因为学生认证后好像免费使用Github Copilot，而目前的免费版限制得比较多，平均一天只有60次补全，应该不够用】</p>
-<blockquote>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class="line-numbers language-visual" data-language="visual"><div class="caption"><span>basic</span></div><code class="language-visual">Sub ExportNotesToWord()
+    Dim pptApp As PowerPoint.Application
+    Dim pres As PowerPoint.Presentation
+    Dim sld As PowerPoint.Slide
+    Dim wdApp As Object
+    Dim wdDoc As Object
+    Dim i As Integer
+    
+    &#39; 打开当前演示文稿
+    Set pptApp &#x3D; Application
+    Set pres &#x3D; pptApp.ActivePresentation
+    
+    &#39; 创建 Word 应用程序
+    On Error Resume Next
+    Set wdApp &#x3D; GetObject(, &quot;Word.Application&quot;)
+    If wdApp Is Nothing Then
+        Set wdApp &#x3D; CreateObject(&quot;Word.Application&quot;)
+    End If
+    wdApp.Visible &#x3D; True
+    Set wdDoc &#x3D; wdApp.Documents.Add
+    
+    &#39; 设置 Word 文档标题
+    wdDoc.Paragraphs.Add
+    wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Size &#x3D; 16
+    wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Bold &#x3D; True
+    wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Text &#x3D; &quot;PowerPoint 备注导出&quot; &amp; vbCrLf
+    
+    &#39; 遍历每页幻灯片
+    For Each sld In pres.Slides
+        i &#x3D; sld.SlideIndex
+        If Len(sld.NotesPage.Shapes.Placeholders(2).TextFrame.TextRange.Text) &gt; 0 Then
+            &#39; 添加幻灯片编号
+            wdDoc.Paragraphs.Add
+            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Size &#x3D; 12
+            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Bold &#x3D; True
+            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Text &#x3D; &quot;幻灯片 &quot; &amp; i &amp; &quot;:&quot; &amp; vbCrLf
+            
+            &#39; 添加备注内容
+            wdDoc.Paragraphs.Add
+            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Size &#x3D; 10
+            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Bold &#x3D; False
+            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Text &#x3D; sld.NotesPage.Shapes.Placeholders(2).TextFrame.TextRange.Text &amp; vbCrLf
+            
+        End If
+    Next sld
+    
+    &#39; 保存 Word 文档
+    wdDoc.SaveAs (pres.Path &amp; &quot;\PPT_Notes.docx&quot;)
+    wdDoc.Close
+    wdApp.Quit
+    
+    &#39; 清理对象
+    Set wdDoc &#x3D; Nothing
+    Set wdApp &#x3D; Nothing
+    Set pres &#x3D; Nothing
+    Set pptApp &#x3D; Nothing
+    
+    MsgBox &quot;备注已成功导出到 &quot; &amp; pres.Path &amp; &quot;\PPT_Notes.docx&quot;
+End Sub<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><ol>
+<li><p>打开 PowerPoint</p>
+<p> ：</p>
 <ul>
-<li>You must configure your browser and operating system to allow location access. You may not use a VPN. If you believe that our information about your school is incomplete or incorrect, then please select ‘My selected school has incorrect or incomplete information e.g. domains or campus location’ option when submitting a GitHub Education support ticket.</li>
-<li>The image you captured appears to be a screen display. Please take a clear, live photo of physical documentation confirming your academic enrollment.</li>
-<li>You are unlikely to be verified until you have completed your <a target="_blank" rel="noopener" href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/personalizing-your-profile">GitHub user profile</a> with your full name exactly as it appears in your academic affiliation document. Please do not use a variation of your name or a nickname. Once you have updated your profile information log out and log back into GitHub before re-applying.</li>
+<li>确保目标 PPT 文件已打开。</li>
+<li>文件必须已保存到本地磁盘（未保存的新文件会导致路径错误）。</li>
 </ul>
-</blockquote>
-<p>第三次，参考 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/674783867">github copilot学生认证（全网最好） - 知乎</a> 按学生证的结构手写了个学生证，没被秒拒，静待花开。</p>
-<p>我想了想，这事情好像没必要记录在我的obsidian仓库中，但又确实算是经验，就时隔多日，再写次博客。</p>
-<hr>
+</li>
+<li><p>启用 VBA 宏</p>
+<p> ：</p>
 <ul>
-<li><p>2025-03-03 18:51 收到认证通过邮件，同时在Github上的简介也加上了星和Pro，但是在Copilot还是free plan。不知道要等多久。</p>
-<blockquote>
-<p>在你成功后，可以看到自己approve来了，但是此时还需要等待一段时间。我看了大家的经验贴，短的在几小时，长的甚至有一个月的。普遍在2到3天（好像和你的提交的材料是否详细有关系）。耐心等待即可<br>——<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/674783867">github copilot学生认证（全网最好） - 知乎</a></p>
-</blockquote>
-</li>
-<li><p>2025-03-07 18:40 这周的工作日都过了（审核或者其他类似的处理这件事情人的时区可能还没结束），等不到哇。</p>
-</li>
-<li><p>2025-03-09 不会真等不到了吧……</p>
-</li>
-<li><p>2025-03-10 15:34 还没等到，等不到（《后会无期》旋律）</p>
-</li>
-<li><p>2025-03-11</p>
-<ul>
-<li>09:50 既然你不来，那我也不一直等你了，继续用free plan的吧 :sob:</li>
-<li>18:24 终于来了。</li>
+<li>按 <code>Alt + F11</code> 打开 VBA 编辑器。</li>
+<li>在 PowerPoint 中启用宏（“文件” &gt; “信息” &gt; “启用内容”）。</li>
 </ul>
+</li>
+<li><p>插入脚本</p>
+<p> ：</p>
+<ul>
+<li>在 VBA 编辑器中，点击“插入” &gt; “模块”。</li>
+<li>复制并粘贴提供的 VBA 代码（见原始脚本）。</li>
+</ul>
+</li>
+<li><p>运行脚本</p>
+<p> ：</p>
+<ul>
+<li>在 VBA 编辑器中按 <code>F5</code> 运行脚本，或在 PowerPoint 中添加按钮运行。</li>
+<li>脚本将生成 <code>PPT_Notes.docx</code> 文件，位于 PPT 文件所在目录。</li>
+</ul>
+</li>
+<li><p>检查输出</p>
+<p> ：</p>
+<ul>
+<li>打开生成的 Word 文档，确认备注内容和排版是否正确。</li>
+</ul>
+</li>
+</ol>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li><strong>备份文件</strong>：运行脚本前，建议备份 PPT 文件，以防意外情况（如 PowerPoint 崩溃）。</li>
+<li><strong>依赖 Microsoft Word</strong>：脚本需要系统中安装 Microsoft Word。如果未安装 Word，可修改脚本输出为文本文件（需要额外调整代码）。</li>
+<li><strong>文件路径</strong>：确保 PPT 文件已保存，且所在文件夹有写入权限，否则可能无法生成 Word 文档。</li>
+<li><strong>备注为空</strong>：如果某页幻灯片没有备注，脚本会自动跳过该页。</li>
+<li><strong>路径编码</strong>：避免 PPT 文件路径包含特殊字符（特别是非英文字符），可能导致路径解析错误。</li>
+<li><strong>宏安全性</strong>：仅运行来自可信来源的脚本，避免潜在安全风险。</li>
+<li><strong>测试环境</strong>：建议先用小型 PPT 文件测试脚本，确保输出符合预期。</li>
+</ul>
+<h2 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h2><p>以下是脚本的核心逻辑，精简为伪代码形式：</p>
+<pre class="line-numbers language-none"><code class="language-none">初始化 PowerPoint 应用程序和当前演示文稿
+创建新的 Word 文档
+在 Word 文档中添加标题 &quot;PowerPoint 备注导出&quot;
+
+对于每页幻灯片：
+    获取幻灯片编号
+    如果幻灯片有备注：
+        在 Word 文档中添加标题 &quot;幻灯片 X:&quot;
+        设置标题和内容的字体样式（大小、加粗等）
+        添加备注内容
+
+将 Word 文档保存为 &quot;PPT_Notes.docx&quot;（位于 PPT 文件目录）
+关闭 Word 文档和应用程序
+显示完成提示
+清理对象<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><ul>
+<li><p><strong>文件</strong>：<code>PPT_Notes.docx</code></p>
+</li>
+<li><p>结构</p>
+<p>  ：</p>
+<ul>
+<li>标题：<code>PowerPoint 备注导出</code>（16 号字体，加粗）</li>
+<li>每页备注：<ul>
+<li>标题：<code>幻灯片 X:</code>（12 号字体，加粗）</li>
+<li>内容：备注文本（10 号字体，常规）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>位置</strong>：与 PPT 文件同一目录</p>
 </li>
 </ul>
 </div>
@@ -436,7 +541,7 @@
     <div class="post-meta">
         <i>
         
-            <span>2025-02-28</span>
+            <span>2025-05-22</span>
             
                 <span>该篇文章被 GanMocai</span>
             
@@ -444,12 +549,12 @@
                 <span>打上标签:
                     
                     
-                        <a href='/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/'>
-                            碎碎念
+                        <a href='/tags/VBA/'>
+                            VBA
                         </a>
                     
-                        <a href='/tags/Github/'>
-                            Github
+                        <a href='/tags/powerpoint/'>
+                            powerpoint
                         </a>
                     
                 </span>
@@ -466,11 +571,11 @@
     
             <div class="post-footer-pre-next">
                 
-                    <span>上一篇：<a href='/2025/03/01/%E4%B8%80%E4%BB%BD%E7%94%A8%E4%BA%8Eword%E4%B8%AD%E5%B7%B2%E7%BB%8F%E7%BB%99%E5%9B%BE%E6%89%8B%E5%8A%A8%E6%96%87%E6%9C%AC%E7%BC%96%E5%8F%B7%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%A4%E5%8F%89%E5%BC%95%E7%94%A8%E7%9A%84VBA%E4%BB%A3%E7%A0%81/'>一份用于word中已经给图手动文本编号转换为交叉引用的VBA代码</a></span>
+                    <span>上一篇：<a href='/2025/06/04/%E4%B8%AA%E4%BA%BA%E5%BC%80%E5%8F%91-Git-%E8%A7%84%E8%8C%83/'>个人开发 Git 规范</a></span>
                 
 
                 
-                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/02/15/check-My-Key/">check My Key</a>
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/03/23/QQ%20NT%20%E5%85%A8%E6%96%B0%E9%87%8D%E6%9E%84%E8%83%8C%E5%90%8E%E7%9A%84%E6%80%9D%E8%80%83_%E7%A7%91%E5%AD%A6%E4%B8%AD%E5%9B%BD/">QQ NT 全新重构背后的思考_科学中国</a>
                     </span>
                 
             </div>
