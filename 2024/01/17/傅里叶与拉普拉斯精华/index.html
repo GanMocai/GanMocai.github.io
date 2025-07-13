@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="傅里叶与拉普拉斯精华" />
+    <meta name="hexo-theme-A4" content="v1.9.7" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.png">
+    <title>GanMocai&#39;s Blog | GanMocai的个人博客</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+    
+    
+        <style>
+            .index-main{
+                max-width:  880px;
+            }
+        </style>
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    <style>
+        :root {
+            --waline-theme-color: #9e5345; 
+            --waline-color: #9e5345; 
+            --waline-border-color: #9e5345; 
+            --waline-white: #9e5345; 
+            --waline-bgcolor-light: #efeae2;  
+        }
+        body {
+            color: #9e5345;
+            background: #e8e0c9;
+        }
+        .post-md code {
+            background: #e8e0c9;
+            color: #2e5041; 
+        }
+        .post-md pre, .post-md .highlight {
+            background: #e8e0c9;
+            color: #2e5041; 
+        }
+        pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+            color: #9e5345;
+        }
+        pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+            color: #9e5345;
+        }
+        .year-font-color {
+            color: #9e5345 !important;
+        }
+        .wl-card span.wl-nick {
+            color: #9e5345; 
+        }
+        .wl-card .wl-badge {
+            border: 1px solid #9e5345;
+            color: #9e5345; 
+        }
+        .wl-btn {
+            border: 1px solid #9e5345; 
+            color:  #9e5345;  
+        }
+        .wl-btn.primary {
+            color: #efeae2; 
+        }
+        .wl-header label {
+            color: #9e5345;
+        }
+        a {
+            color: #2e5041;
+        }
+
+        .post-md a {
+            color: #2e5041;
+        }
+
+        .nav li a {
+            color: #2e5041;
+        }
+
+        .archive-main a:link {
+            color: #2e5041;
+        }
+        .archive-main a:visited {
+            color: #9c9caf; 
+        }
+
+        .archive li span {
+            color: #9e5345;
+        }
+
+        .post-main-title {
+            color: #9e5345;
+        }
+
+        .post-md h1,
+        .post-md h2,
+        .post-md h3,
+        .post-md h4,
+        .post-md h5,
+        .post-md h6 {
+            color: #9e5345;
+        }
+
+        [data-waline] p {
+            color: #9e5345;
+        }
+        [data-waline] a {
+            color: #9e5345;
+        } 
+        .wl-sort li.active {
+            color: #9e5345;
+        }
+
+        .wl-card .wl-meta>span {
+            background: #efeae2;
+        }
+
+        .paper {
+            background: #e8e0c9;
+        }
+
+        .index-main {
+            background: #efeae2;
+        }
+
+        .paper-main {
+            background: #efeae2;
+        }
+
+        .wl-panel {
+            background: #efeae2;
+        }
+
+        .archive li:nth-child(odd) {
+            background: #efeae2;
+            ;
+        }
+
+        .archive li:nth-child(even) {
+            background: #efeae2;
+        }
+
+        .post-md table tr:nth-child(odd) td {
+            background: #efeae2;
+        }
+
+        .post-md table tr:nth-child(even) td {
+            background: #efeae2;
+        }
+
+    
+        .progress-wrap::after {
+            color: #9e5345; /* 箭头的颜色 */
+        }
+        .progress-wrap svg.progress-circle path {
+	        stroke: #9e5345; /* 边框的颜色 */
+        }
+        .progress-wrap::before {
+	        background-image: linear-gradient(298deg, #2e5041, #2e5041); /* 鼠标滑过的箭头颜色 */
+         }
+
+        .return-to-last-progress-wrap::after {
+            color: #9e5345; /* 箭头的颜色 */
+        }
+        .return-to-last-progress-wrap svg.progress-circle path {
+	        stroke: #9e5345; /* 边框的颜色 */
+        }
+        .return-to-last-progress-wrap::before {
+	        background-image: linear-gradient(298deg, #2e5041, #2e5041); /* 鼠标滑过的箭头颜色 */
+         }
+
+         .left-toc-container::-webkit-scrollbar-thumb {
+            background-color: #9e5345; /* 设置滚动条拖动块的颜色 */
+        }
+
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            color: #2e5041;
+            border-left-color: #2e5041;
+        }
+        .bs-docs-sidebar .nav>li>a {
+            color:  #9e5345;
+        }
+    </style>
+
+    
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #e8e0c9  ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.png" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">GanMocai&#39;s Blog</a> 
+            <span class="description"></span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    傅里叶与拉普拉斯精华
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2024-01-17</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：3.2k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：17分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#delta-%E5%87%BD%E6%95%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%A7%E8%B4%A8"><span class="post-toc-text">$\delta$函数的一些性质</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%82%85%E9%87%8C%E5%8F%B6%E7%A7%AF%E5%88%86"><span class="post-toc-text">傅里叶积分</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="post-toc-text">傅里叶变换的性质</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%A7%E8%B4%A8"><span class="post-toc-text">傅里叶变换的基本性质</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E7%9A%84%E5%8D%B7%E7%A7%AF%E4%B8%8E%E5%8D%B7%E7%A7%AF%E5%AE%9A%E7%90%86"><span class="post-toc-text">傅里叶变换的卷积与卷积定理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E7%9A%84%E5%BA%94%E7%94%A8"><span class="post-toc-text">傅里叶变换的应用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%82%85%E9%87%8C%E5%8F%B6%E7%A7%AF%E5%88%86%E7%9A%84%E4%B8%80%E4%BA%9B%E5%85%AC%E5%BC%8F"><span class="post-toc-text">傅里叶积分的一些公式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%A7%AF%E7%B4%AF%E5%85%AC%E5%BC%8F"><span class="post-toc-text">积累公式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A2%98%E7%9B%AE%E6%80%9D%E8%B7%AF"><span class="post-toc-text">题目思路</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A7%A3%E7%A7%AF%E5%88%86%E6%96%B9%E7%A8%8B"><span class="post-toc-text">解积分方程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%AE%A1%E7%AE%97%E5%8F%98%E6%8D%A2"><span class="post-toc-text">计算变换</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E5%8F%98%E6%8D%A2%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="post-toc-text">拉普拉斯变换的性质</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E5%8F%98%E6%8D%A2%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%85%AC%E5%BC%8F"><span class="post-toc-text">拉普拉斯变换的基本公式</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><blockquote>
+<p>创建于2022-11-30，最后修改于2023-01-20. 后微调排版以便更好渲染。</p>
+</blockquote>
+<h2 id="delta-函数的一些性质"><a href="#delta-函数的一些性质" class="headerlink" title="$\delta$函数的一些性质"></a>$\delta$函数的一些性质</h2><script type="math/tex; mode=display">
+\begin{array}{l}
+\delta(-x)=\delta(x) \\
+\int_{-\infty}^{\infty} f(x) \delta\left(x-x_{0}\right) d x=f\left(x_{0}\right) \\
+\int_{-\infty}^{\infty} f(x) \delta\left(x-x_{0}\right) d x=\int_{x_{0}-\epsilon}^{x_{0}+\epsilon} f(x) \delta\left(x-x_{0}\right) d x=f\left(x_{0}\right) \int_{x_{0}-\epsilon}^{x_{0}+\epsilon} \delta\left(x-x_{0}\right) d x \\
+f(x) \delta\left(x-x_{0}\right)=f\left(x_{0}\right) \delta\left(x-x_{0}\right) \quad x \delta(x)=0 \\
+x A(x)=x B(x) \stackrel{\text { ? }}{\Rightarrow\!\!\!\!\!\!\! \backslash } A(x)=B(x) \quad A(x)=B(x)+c \delta(x) \\
+\int_{-\infty}^{\infty} \delta\left(x-x_{2}\right) \delta\left(x-x_{1}\right) d x=\delta\left(x_{1}-x_{2}\right) \\
+\end{array}</script><h2 id="傅里叶积分"><a href="#傅里叶积分" class="headerlink" title="傅里叶积分"></a>傅里叶积分</h2><script type="math/tex; mode=display">
+f(t)=\dfrac{1}{2\pi}\int_{-\infty}^{+\infty}\left[\int_{-\infty}^{+\infty}f(\tau)\mathrm{e}^{-i\omega\tau}\mathrm{d}\tau\right]\mathrm{e}^{i\omega t}\mathrm{d}\omega.</script><h2 id="傅里叶变换的性质"><a href="#傅里叶变换的性质" class="headerlink" title="傅里叶变换的性质"></a>傅里叶变换的性质</h2><p>本节介绍傅里叶变换的几个重要性质, 为了叙述方便起见, 假定在这些性质 中, 凡是需要求傅氏变换的函数都满足傅氏积分定理中的条件, 而在证明这些性质 时, 不再重述. 在实际应用时, 只要记住基本函数的傅里叶变换, 则常见函数的傅里 叶变换都无须用公式直接计算而可由傅里叶变换的性质导出.</p>
+<h3 id="傅里叶变换的基本性质"><a href="#傅里叶变换的基本性质" class="headerlink" title="傅里叶变换的基本性质"></a>傅里叶变换的基本性质</h3><p>性质 $7.1$ 线性性质: 设 $\alpha, \beta$ 为任意的常数, $F(\omega)=\mathscr{F}[f(t)], G(\omega)=\mathscr{F}[g(t)]$, 则</p>
+<script type="math/tex; mode=display">
+\begin{gathered}
+\mathscr{F}[\alpha f(t)+\beta g(t)]=\alpha F(\omega)+\beta G(\omega), \\
+\mathscr{F}^{-1}[\alpha F(\omega)+\beta G(\omega)]=\alpha f(t)+\beta g(t) .
+\end{gathered}</script><p>证明 直接由傅氏变换和逆变换的定义可得</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \mathscr{F}[\alpha f(t)+\beta g(t)]=\int_{-\infty}^{+\infty}[\alpha f(t)+\beta g(t)] \mathrm{e}^{-i \omega t} \mathrm{~d} t \\
+& =\alpha \int_{-\infty}^{+\infty} \mathrm{e}^{-i \omega t} \mathrm{~d} t+\beta \int_{-\infty}^{+\infty} g(t) \mathrm{e}^{-\dot{i} \omega t} \mathrm{~d} t \\
+& =\alpha F(\omega)+\beta G(\omega) \text {, } \\
+& \mathscr{F}^{-1}[\alpha F(\omega)+\beta G(\omega)]=\frac{1}{2 \pi} \int_{-\infty}^{+\infty}[\alpha F(\omega)+\beta G(\omega)] \mathrm{e}^{\mathrm{i} \omega t} \mathrm{~d} \omega
+\end{aligned}</script><script type="math/tex; mode=display">
+\begin{aligned}
+&=\frac{\alpha}{2 \pi} \int_{-\infty}^{+\infty} F(\omega) \mathrm{e}^{\mathrm{i} \omega t} \mathrm{~d} \omega+\frac{\beta}{2 \pi} \int_{-\infty}^{+\infty} G(\omega) \mathrm{e}^{\mathrm{i} \omega t} \mathrm{~d} \omega \\
+&=\alpha f(t)+\beta g(t) .
+\end{aligned}</script><p>例 $7.10$ 求 $\sin ^{2} t$ 的傅里叶变换.</p>
+<p>解 利用线性性质, 1 和 $\cos t$ 的傅里叶变换, 得</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathscr{F}\left[\sin ^{2} t\right] &=\mathscr{F}\left[\frac{1}{2}-\frac{1}{2} \cos 2 t\right]=\frac{1}{2} \mathscr{F}[1]-\frac{1}{2} \mathscr{F}[\cos 2 t] \\
+&=\pi \delta(\omega)-\frac{\pi}{2}[\delta(\omega+2)+\delta(\omega-2)] .
+\end{aligned}</script><p>例 7.11 设 $F(\omega)=\pi \delta(\omega+1)-\frac{\mathrm{i}}{\omega+1}$, 求 $F(\omega)$ 的傅里叶逆变换.</p>
+<p>解 利用线性性质得</p>
+<p>$\mathscr{F}^{-1}[F(\omega)]=\mathscr{F}^{-1}[\pi \delta(\omega+1)]-\mathscr{F}^{-1}\left[\frac{\mathrm{i}}{\omega+1}\right]=\frac{1}{2} \mathrm{e}^{-\mathrm{it}}-\mathscr{F}^{-1}\left[\frac{\mathrm{i}}{\omega+1}\right]$,</p>
+<p>直接计算, 并利用狄利克雷积分, 得</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \mathscr{F}^{-1}\left[\frac{\mathrm{i}}{\omega+1}\right]=\frac{1}{2 \pi} \int_{-\infty}^{+\infty} \frac{\mathrm{i}}{\omega+1} \mathrm{e}^{\mathrm{i} \omega t} \mathrm{~d} \omega \\
+=& \frac{1}{2 \pi} \int_{-\infty}^{+\infty} \frac{\mathrm{i}}{\omega+1} \mathrm{e}^{\mathrm{i}(\omega+1) t} \mathrm{e}^{-\mathrm{i} t} \mathrm{~d} \omega=\frac{\mathrm{e}^{-i t}}{2 \pi} \int_{-\infty}^{+\infty} \frac{\mathrm{ie}^{\mathrm{i}(\omega+1) t}}{\omega+1} \mathrm{~d}(\omega+1) \\
+=&-\frac{\mathrm{e}^{-\mathrm{i} t}}{2 \pi} \int_{-\infty}^{+\infty} \frac{\sin (\omega+1)}{\omega+1} \mathrm{~d}(\omega+1)=-\frac{\mathrm{e}^{-i t}}{2 \pi} \int_{0}^{+\infty} \frac{\sin \omega t}{\omega} \mathrm{d} \omega \\
+=& \begin{cases}\frac{1}{2} \mathrm{e}^{-\mathrm{i} t} \quad(t<0), \\
+-\frac{1}{2} \mathrm{e}^{-i t} \quad(t>0) .\end{cases}
+\end{aligned}</script><p>从而 $\mathscr{F}^{-1}[F(\omega)]=u(t) \mathrm{e}^{-\mathrm{it}}$, 其中 $u(t)$ 为单位阶跃函数.</p>
+<p>性质 $7.2$ 对称性: 设 $\mathscr{F}[f(t)]=F(\omega)$, 则</p>
+<script type="math/tex; mode=display">
+\mathscr{F}[F(t)]=2 \pi f(-\omega) .</script><p>证明 由傅里叶逆变换定义, 有</p>
+<script type="math/tex; mode=display">
+f(-t)=\frac{1}{2 \pi} \int_{-\infty}^{+\infty} F(\omega) \mathrm{e}^{-\mathrm{i} \omega t} \mathrm{~d} \omega,</script><p>从而</p>
+<script type="math/tex; mode=display">
+\mathscr{F}[F(t)]=\int_{-\infty}^{+\infty} F(t) \mathrm{e}^{-i \omega t} \mathrm{~d} t=2 \pi f(-\omega) .</script><p>例 $7.12$ 利用矩形脉冲函数 $f(t)=\left{\begin{array}{ll}1, &amp; |t|<1, \\ 0, & |t|>1\end{array}\right.$ 的傅里叶变换, 证明:</p>
+<script type="math/tex; mode=display">
+\mathscr{F}\left[\frac{\sin t}{t}\right]= \begin{cases}\pi, & |\omega|<1, \\ 0, & |\omega|>1 .\end{cases}</script><p>证明 由例 $7.4$, 矩形脉冲函数 $f(t)=\left{\begin{array}{ll}1, &amp; |t|<1, \\ 0, & |t|>1\end{array}\right.$ 的傅里叶变换为</p>
+<script type="math/tex; mode=display">
+\mathscr{F}[f(t)]=\frac{2 \sin \omega}{\omega} .</script><p>利用对称性,得</p>
+<script type="math/tex; mode=display">
+\mathscr{F}\left[\frac{\sin t}{t}\right]=\pi f(-\omega)= \begin{cases}\pi, & |\omega|<1, \\ 0, & |\omega|>1 .\end{cases}</script><p>性质 $7.3$ 位移性: 设 $\mathscr{F}[f(t)]=F(\omega), t<em>{0}$ 和 $\omega</em>{0}$ 为常数, 则</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\mathscr{F}\left[f\left(t-t_{0}\right)\right]=\mathrm{e}^{-\mathrm{i} \omega t_{0}} F(\omega), \\
+&\mathscr{F}\left[\mathrm{e}^{\mathrm{i} \omega_{0} t} f(t)\right]=F\left(\omega-\omega_{0}\right) .
+\end{aligned}</script><p>或</p>
+<script type="math/tex; mode=display">
+\mathscr{F}^{-1}\left[F\left(\omega-\omega_{0}\right)\right]=\mathrm{e}^{i \omega_{0} t} f(t) .</script><p>证明 仅证明式 $(7-37)$. 令 $s=t-t_{0}$, 则</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathscr{F}\left[f\left(t-t_{0}\right)\right] &=\int_{-\infty}^{+\infty} f\left(t-t_{0}\right) \mathrm{e}^{-i \omega t} \mathrm{~d} t \\
+&=\int_{-\infty}^{+\infty} f(s) \mathrm{e}^{-i \omega\left(s+t_{0}\right)} \mathrm{d} s=\mathrm{e}^{-i \omega t_{0}} \int_{-\infty}^{+\infty} f(s) \mathrm{e}^{-i \omega s} \mathrm{~d} s \\
+&=\mathrm{e}^{-i \omega t_{0}} F(\omega) .
+\end{aligned}</script><p>例 7.13 已知函数 $f(t)$ 的傅里叶变换为 $F(\omega)$, 求函数 $f(t) \sin \omega<em>{0} t$ 和 $f(t)$ $\cos \omega</em>{0} t$ 的傅里叶变换, 其中 $\omega_{0}$ 为常数.</p>
+<p>解 利用傅里叶逆变换的位移性 (7-38), 可得</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathscr{F}\left[f(t) \sin \omega_{0} t\right] &=\mathscr{F}\left[f(t)\left(\frac{\mathrm{e}^{\mathrm{i} \omega_{0} t}-\mathrm{e}^{-\mathrm{i} \omega_{0} t}}{2 \mathrm{i}}\right)\right] \\
+&=\frac{1}{2 \mathrm{i}}\left\{\mathscr{F}\left[f(t) \mathrm{e}^{\mathrm{i} \omega_{0} t}\right]-\mathscr{F}\left[f(t) \mathrm{e}^{-\mathrm{i} \omega_{0} t}\right]\right\} \\
+&=\frac{\mathrm{i}}{2}\left[F\left(\omega+\omega_{0}\right)-F\left(\omega-\omega_{0}\right)\right] .
+\end{aligned}</script><p>同理可得</p>
+<script type="math/tex; mode=display">
+\mathscr{F}\left[f(t) \cos \omega_{0} t\right]=\frac{1}{2}\left[F\left(\omega+\omega_{0}\right)+F\left(\omega-\omega_{0}\right)\right] .</script><p>性质 $7.4$ 相似性: 设 $\mathscr{F}[f(t)]=F(\omega), a \neq 0$, 则</p>
+<script type="math/tex; mode=display">
+\begin{gathered}
+\mathscr{F}[f(a t)]=\frac{1}{|a|} F\left(\frac{\omega}{a}\right), \\
+\mathscr{F}^{-1}[F(a \omega)]=\frac{1}{|a|} f\left(\frac{t}{a}\right) .
+\end{gathered}</script><p>证明 首先证明傅里叶变换的相似性. 令 $s=a t$. 当 $a&gt;0$ 时,</p>
+<script type="math/tex; mode=display">
+\mathscr{H}[f(a t)]=\frac{1}{a} \int_{-\infty}^{+\infty} f(s) \mathrm{e}^{-i \omega \omega^{\frac{s}{a}}} \mathrm{~d} s=\frac{1}{a} F\left(\frac{\omega}{a}\right),</script><p>同理,当 $a&lt;0$ 时,</p>
+<script type="math/tex; mode=display">
+\mathscr{F}[f(a t)]=-\frac{1}{a} \int_{-\infty}^{+\infty} f(s) \mathrm{e}^{-i \omega_{a}^{s}} \mathrm{~d} s=-\frac{1}{a} F\left(\frac{\omega}{a}\right),</script><p>因此, 当 $a \neq 0$ 时,式 (7-39) 成立.</p>
+<p>同理可证傅里叶逆变换的相似性.</p>
+<p>更一般的, 有如下的结论</p>
+<script type="math/tex; mode=display">
+\color{red} \mathscr{F}\left[f\left(a t-t_{0}\right)\right]=\frac{1}{|a|} \mathrm{e}^{-\mathrm{i}^{t_{0}} \frac{\omega}{a} \omega} F\left(\frac{\omega}{a}\right) .</script><p>例 7.14 计算 $\mathscr{F}[u(5 t-2)]$, 其中 $u(t)$ 为单位阶跃函数.<br>解 方法 1 先用相似性, 再用位移性. 令 $g(t)=u(t-2)$, 则 $g(5 t)=u(5 t-2)$.</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathscr{F}[u(5 t-2)] &=\mathscr{F}[g(5 t)]=\left.\frac{1}{5} \mathscr{F}[g(t)]\right|_{\frac{\omega}{5}}=\frac{1}{5} \mathscr{F}[u(t-2)]_{\frac{\omega}{5}} \\
+&=\left.\left(\frac{1}{5} \mathrm{e}^{-2 \mathrm{i} \omega \mathscr{F}}[u(t)]\right)\right|_{\frac{\omega}{5}}=\left.\left(\frac{1}{5} \mathrm{e}^{-2 \mathrm{i} \omega}\left[\frac{1}{\mathrm{i} \omega}+\pi \delta(\omega)\right]\right)\right|_{\frac{\omega}{5}} \\
+&=\frac{1}{5} \mathrm{e}^{-\frac{2}{5} \mathrm{i} \omega}\left[\frac{5}{\mathrm{i} \omega}+\pi \delta\left(\frac{\omega}{5}\right)\right] .
+\end{aligned}</script><p>方法 2 先用位移性, 再用相似性. 令 $g(t)=u(5 t)$, 则 $g\left(t-\frac{2}{5}\right)=u(5 t-2)$.</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathscr{F}[u(5 t-2)] &=\mathscr{F}\left[g\left(t-\frac{2}{5}\right)\right]=\mathrm{e}^{-\frac{2}{5} \mathrm{i} \omega \mathscr{F}}[g(t)]=\mathrm{e}^{-\frac{2}{5} \mathrm{i} \omega} \mathscr{F}[u(5 t)] \\
+&=\mathrm{e}^{-\frac{2}{5} \mathrm{i} \omega}\left[\frac{1}{5} \mathscr{F}[u(t)]_{\frac{\omega}{5}}=\left.\left(\frac{1}{5} \mathrm{e}^{-\frac{2}{5} \mathrm{i} \omega}\left[\frac{1}{\mathrm{i} \omega}+\pi \delta(\omega)\right]\right)\right|_{\frac{\omega}{5}}\right.\\
+&=\frac{1}{5} \mathrm{e}^{-\frac{2}{5} \mathrm{i} \omega}\left[\frac{5}{\mathrm{i} \omega}+\pi \delta\left(\frac{\omega}{5}\right)\right] .
+\end{aligned}</script><p>方法 3 直接由式(7-41)得</p>
+<script type="math/tex; mode=display">
+\mathscr{F}[u(5 t-2)]=\frac{1}{5} \mathrm{e}^{-\frac{2}{5} \mathrm{i} \omega \mathscr{F}}[u(t)]_{\frac{\omega}{5}}=\frac{1}{5} \mathrm{e}^{-\frac{2}{5} \mathrm{i} \omega}\left[\frac{5}{\mathrm{i} \omega}+\pi \delta\left(\frac{\omega}{5}\right)\right] .</script><p>比较上述三种方法, 方法 3 较为简捷. 事实上, 本题可直接由傅里叶变换的定 义计算.</p>
+<p>性质 $7.5$ 微分性: 设 $\mathscr{F}[f(t)]=F(\omega)$.</p>
+<p>（1）原像函数的微分性.</p>
+<p>若 $\color {red} \lim _{|t| \rightarrow+\infty} f(t)=0$, 则</p>
+<script type="math/tex; mode=display">
+\mathscr{F}\left[f^{\prime}(t)\right]=\mathrm{i} \omega F(\omega),</script><p>（2）像函数的微分性.</p>
+<script type="math/tex; mode=display">
+F^{\prime}(\omega)=-\mathrm{i} \mathscr{F}[t f(t)] . \text{或者} \mathscr{F}[t f(t)] = \mathrm{i}F^{\prime}(\omega)</script><p>证明</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathscr{F}\left[f^{\prime}(t)\right] &=\int_{-\infty}^{+\infty} f^{\prime}(t) \mathrm{e}^{-\mathrm{i} \omega t} \mathrm{~d} t \\
+&=\left.f(t) \mathrm{e}^{-i \omega t}\right|_{-\infty} ^{+\infty}+\mathrm{i} \omega \int_{-\infty}^{+\infty} f(t) \mathrm{e}^{-i \omega t} \mathrm{~d} t=\mathrm{i} \omega F(\omega),
+\end{aligned}</script><script type="math/tex; mode=display">
+\begin{aligned}
+F^{\prime}(\omega) &=\frac{\mathrm{d}}{\mathrm{d} \omega} \int_{-\infty}^{+\infty} f(t) \mathrm{e}^{-\mathrm{i} \omega t} \mathrm{~d} t=\int_{-\infty}^{+\infty} \frac{\mathrm{d}}{\mathrm{d} \omega} f(t) \mathrm{e}^{-i \omega t} \mathrm{~d} t \\
+&=\int_{-\infty}^{+\infty} f(t)(-\mathrm{i} t) \mathrm{e}^{-i \omega t} \mathrm{~d} t=-\mathrm{i} \mathscr{F}[t f(t)] .
+\end{aligned}</script><p>一般地, 若 $\lim _{|t| \rightarrow+\infty} f^{(k)}(t)=0(k=0,1, \cdots, n-1)$, 则</p>
+<script type="math/tex; mode=display">
+\mathscr{F}\left[f^{(n)}(t)\right]=(\mathrm{i} \omega)^{n} F(\omega) .</script><p>$(7-44)$</p>
+<p>类似地, 有</p>
+<script type="math/tex; mode=display">
+F^{(n)}(\omega)=(-\mathrm{i})^{n} \mathscr{F}\left[t^{n} f(t)\right] .</script><p>需指出的是, 附件条件 $\lim _{|t| \rightarrow+\infty} f^{(k)}(t)=0(k=0,1, \cdots, n-1)$ 目的是为证明 式 (7-44) 方便, 事实上, 满足<font color="#ffc000">傅里叶变换存在性条件的函数</font> $f^{(k)}(t)$, <font color="#ffc000">必满足附件条件</font>.</p>
+<p>例 $7.15$ 设函数 $f(t)=\mathrm{e}^{-|t|}$, 求函数 $t f(t)$ 的傅里叶变换.</p>
+<p>解 显然, 函数 $f(t)$ 满足条件. 首先, 求 $f(t)$ 的傅里叶变换.</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+F(\omega) &=\mathscr{F}[f(t)]=\int_{-\infty}^{+\infty} \mathrm{e}^{-|t|} \mathrm{e}^{-\mathrm{i} \omega t} \mathrm{~d} t \\
+&=2 \int_{-\infty}^{+\infty} \mathrm{e}^{-t} \cos \omega t \mathrm{~d} t .
+\end{aligned}</script><p>记 $I=\int_{0}^{+\infty} \mathrm{e}^{-t} \cos \omega t \mathrm{~d} t$, 经分部积分两次, 得 $I=\frac{1}{1+\omega^{2}}$. 从而</p>
+<script type="math/tex; mode=display">
+F(\omega)=\frac{2}{1+\omega^{2}} .</script><p>利用微分性得</p>
+<script type="math/tex; mode=display">
+\mathscr{F}[t f(t)]=\mathrm{i} \frac{\mathrm{d}}{\mathrm{d} \omega} F(\omega)=\frac{-4 \mathrm{i} \omega}{\left(1+\omega^{2}\right)^{2}} .</script><p>性质 $7.6$ 积分性: 设 $\mathscr{F}[f(t)]=F(\omega)$, 如果 $\lim <em>{t \rightarrow+\infty} \int</em>{-\infty}^{t} f(\tau) \mathrm{d} \tau=0$, 则</p>
+<script type="math/tex; mode=display">
+\mathscr{F}\left[\int_{-\infty}^{t} f(\tau) \mathrm{d} \tau\right]=\frac{1}{\mathrm{i} \omega} F(\omega) .</script><p>证明 令 $g(t)=\int<em>{-\infty}^{t} f(\tau) \mathrm{d} \tau$, 则 $g^{\prime}(t)=f(t)$. 且 $\lim </em>{|t| \rightarrow+\infty} g(t)=0$. 对 $g(t)$ 应用 微分性得</p>
+<script type="math/tex; mode=display">
+\mathscr{F}\left[g^{\prime}(t)\right]=\mathrm{i} \omega \mathscr{F}[g(t)],</script><p>从而</p>
+<script type="math/tex; mode=display">
+\mathscr{F}\left[\int_{-\infty}^{t} f(\tau) \mathrm{d} \tau\right]=\frac{1}{\mathrm{i} \omega} \mathscr{F}[f(t)]=\frac{1}{\mathrm{i} \omega} F(\omega) .</script><p>注 如果 $\lim <em>{t \rightarrow+\infty} \int</em>{-\infty}^{t} f(\tau) \mathrm{d} \tau=F(0) \neq 0$, 利用卷积性质可得</p>
+<script type="math/tex; mode=display">
+\color{red} {\mathscr{F}\left[\int_{-\infty}^{t} f(\tau) \mathrm{d} \tau\right]=\frac{1}{\mathrm{i} \omega} F(\omega)+\pi F(0) \delta(\omega)} .</script><p>傅里叶变换的微分性和积分性表明：原函数的微分和积分的运算经过傅里叶 变换后, 变成了像函数的代数运算. 因此, 利用傅里叶变换可以求某些线性微分、 积分方程.</p>
+<p>例 7.16 设 $\lim <em>{|t| \rightarrow+\infty} x(t)=0, \int</em>{-\infty}^{+\infty} x(t) \mathrm{d} t=0$. 求微分、积分方程 $x^{\prime}(t)-4 \int_{-\infty}^{t} x(s) \mathrm{d} s=\delta(t)$ 的解.</p>
+<p>解 记 $X(\omega)=\mathscr{F}[x(t)]$, 方程两边作傅里叶变换, 得</p>
+<script type="math/tex; mode=display">
+i \omega X(\omega)-\frac{4}{i \omega} X(\omega)=1 .</script><p>解上述代数方程得</p>
+<script type="math/tex; mode=display">
+X(\omega)=\frac{-\mathrm{i} \omega}{\left(\omega^{2}+4\right)} .</script><p>由傅里叶逆变换定义</p>
+<script type="math/tex; mode=display">
+x(t)=\frac{-\mathrm{i}}{2 \pi} \int_{-\infty}^{+\infty} \frac{\omega}{\left(\omega^{2}+4\right)} \mathrm{e}^{\mathrm{i} \omega t} \mathrm{~d} \omega .</script><p>上述广义积分可利用留数定理计算. 当 $t&gt;0$ 时,</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+x(t) &=\frac{-\mathrm{i}}{2 \pi} \times 2 \pi \mathrm{i} \times \operatorname{Res}\left[\frac{\omega}{\left(\omega^{2}+4\right)} \mathrm{e}^{\mathrm{i} \omega t}, 2 \mathrm{i}\right] \\
+&=\lim _{\omega \rightarrow 2 \mathrm{i}} \frac{\omega}{\omega+2 \mathrm{i}} \mathrm{e}^{\mathrm{i} \omega t}=\frac{1}{2} \mathrm{e}^{-2 t} .
+\end{aligned}</script><p>当 $t=0$ 时, $x(t)=\frac{-\mathrm{i}}{\pi} \int_{-\infty}^{+\infty} \frac{\omega}{\left(\omega^{2}+4\right)} \mathrm{d} \omega=0$.</p>
+<p>当 $t<0$ 时, 令 $\omega=-u$, 仿照 $t>0$ 时计算, 得</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+x(t) &=\frac{-\mathrm{i}}{2 \pi} \int_{-\infty}^{+\infty} \frac{\omega}{\left(\omega^{2}+4\right)} \mathrm{e}^{\mathrm{i} \omega t} \mathrm{~d} \omega=\frac{\mathrm{i}}{2 \pi} \int_{-\infty}^{+\infty} \frac{u}{\left(u^{2}+4\right)} \mathrm{e}^{\mathrm{i} u(-t)} \mathrm{d} u \\
+&=\frac{\mathrm{i}}{2 \pi} \times 2 \pi \mathrm{i} \times \operatorname{Res}\left[\frac{u}{\left(u^{2}+4\right)} \mathrm{e}^{\mathrm{i} u(-t)}, 2 \mathrm{i}\right] \\
+&=-\lim _{u \rightarrow 2 \mathrm{i}} \frac{u}{u+2 \mathrm{i}} \mathrm{e}^{\mathrm{i} u(-t)}=-\frac{1}{2} \mathrm{e}^{2 t} .
+\end{aligned}</script><p>所以原方程的解为</p>
+<script type="math/tex; mode=display">
+x(t)=\left\{\begin{array}{l}
+\frac{1}{2} \mathrm{e}^{-2 t}, t>0, \\
+0, t=0, \\
+-\frac{1}{2} \mathrm{e}^{2 t}, t<0 .
+\end{array}\right.</script><h3 id="傅里叶变换的卷积与卷积定理"><a href="#傅里叶变换的卷积与卷积定理" class="headerlink" title="傅里叶变换的卷积与卷积定理"></a>傅里叶变换的卷积与卷积定理</h3><p>首先给出 $(-\infty,+\infty)$ 上的卷积定义.</p>
+<p>定义 $7.7$ 设 $f<em>{1}(t), f</em>{2}(t)$ 是定义在 $(-\infty,+\infty)$ 上的两个函数, 如果积分</p>
+<script type="math/tex; mode=display">
+\int_{-\infty}^{+\infty} f_{1}(s) f_{2}(t-s) \mathrm{d} s</script><p>存在, 称其为函数 $f<em>{1}(t), f</em>{2}(t)$ 的卷积,记为</p>
+<script type="math/tex; mode=display">
+f_{1}(t) * f_{2}(t)=\int_{-\infty}^{+\infty} f_{1}(s) f_{2}(t-s) \mathrm{d} s .</script><p>例 $7.17$ 求下列函数的卷积</p>
+<script type="math/tex; mode=display">
+f_{1}(t)=\left\{\begin{array}{l}
+0, t<0, \\
+2, t \geqslant 0,
+\end{array} \quad f_{2}(t)=\left\{\begin{array}{l}
+0, t<0, \\
+\mathrm{e}^{-t}, t \geqslant 0 .
+\end{array}\right.\right.</script><p>解 由于当 $s<0$ 时, $f_{1}(s)=0$, 当 $s>t$ 时, $f<em>{2}(t-s)=0$. 因此, 由卷积定义 可知, 当 $t \leqslant 0$ 时, $f</em>{1}(t) * f_{2}(t)=0$. 当 $t&gt;0$ 时,</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f_{1}(t) * f_{2}(t) &=\int_{-\infty}^{+\infty} f_{1}(s) f_{2}(t-s) \mathrm{d} s \\
+&=\int_{0}^{t} f_{1}(s) f_{2}(t-s) \mathrm{d} s \\
+&=\int_{0}^{t} 2 \mathrm{e}^{-(t-s)} \mathrm{d} s=2 \mathrm{e}^{-t} \int_{0}^{t} \mathrm{e}^{s} \mathrm{~d} s \\
+&=2\left(1-\mathrm{e}^{-t}\right) .
+\end{aligned}</script><p><a target="_blank" rel="noopener" href="https://cdn.mathpix.com/cropped/2022_12_01_fb6b71450554ac292944g-09.jpg?height=255&amp;width=384&amp;top_left_y=277&amp;top_left_x=1016" class="gallery-item" style="box-shadow: none;"> <img src="https://cdn.mathpix.com/cropped/2022_12_01_fb6b71450554ac292944g-09.jpg?height=255&amp;width=384&amp;top_left_y=277&amp;top_left_x=1016" alt=""></a></p>
+<center>图 7-6 积分区域</center>
+
+<p>对于傅里叶变换有如下的卷积定理.</p>
+<p>定理 $7.3$ (卷积定理) 设 $F(\omega)=\mathscr{F}[f(t)], G(\omega)=\mathscr{F}[g(t)]$, 则</p>
+<script type="math/tex; mode=display">
+\begin{gathered}
+\mathscr{F}[f * g]=\mathscr{F}[f(t)] \cdot \mathscr{F}[g(t)]=F(\omega) \cdot G(\omega), \\
+\mathscr{F}[f \cdot g]=\frac{1}{2 \pi} \mathscr{F}[f(t)] * \mathscr{F}[g(t)]=F(\omega) * G(\omega) .
+\end{gathered}</script><p>证明</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathscr{F}[f * g] &=\int_{-\infty}^{+\infty}\left[\int_{-\infty}^{+\infty} f(s) g(t-s) \mathrm{d} s\right] \mathrm{e}^{-\mathrm{i} \omega t} \mathrm{~d} t \\
+&=\int_{-\infty}^{+\infty} f(s)\left[\int_{-\infty}^{+\infty} g(t-s) \mathrm{e}^{-\mathrm{i} \omega t} \mathrm{~d} t\right] \mathrm{d} s \\
+&=\int_{-\infty}^{+\infty} f(s) \mathscr{F}[g(t-s)] \mathrm{d} s .
+\end{aligned}</script><p>令 $\xi=t-s$, 则</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathscr{F}[g(t-s)] &=\int_{-\infty}^{+\infty} g(t-s) \mathrm{e}^{-i \omega t} \mathrm{~d} t=\int_{-\infty}^{+\infty} g(\xi) \mathrm{e}^{-i \omega \xi} \mathrm{e}^{-i \omega s} \mathrm{~d} \xi \\
+&=\mathrm{e}^{-i \omega s} G(\omega) .
+\end{aligned}</script><p>从而</p>
+<script type="math/tex; mode=display">
+\mathscr{F}[f * g]=\int_{-\infty}^{+\infty} f(s) \mathrm{e}^{-\mathrm{i} \omega s} G(\omega) \mathrm{d} s=F(\omega) \cdot G(\omega) .</script><script type="math/tex; mode=display">
+\begin{aligned}
+\mathscr{F}[f \cdot g] &=\int_{-\infty}^{+\infty} f(t) g(t) \mathrm{e}^{-\mathrm{i} \omega t} \mathrm{~d} t \\
+&=\int_{-\infty}^{+\infty}\left[\frac{1}{2 \pi} \int_{-\infty}^{+\infty} F(s) \mathrm{e}^{\mathrm{i} s t} \mathrm{~d} s\right] g(t) \mathrm{e}^{-\mathrm{i} \omega t} \mathrm{~d} t \\
+&=\frac{1}{2 \pi} \int_{-\infty}^{+\infty} F(s)\left[\int_{-\infty}^{+\infty} g(t) \mathrm{e}^{-\mathrm{i}(\omega-s) t} \mathrm{~d} t\right] \mathrm{d} s \\
+&=\frac{1}{2 \pi} \int_{-\infty}^{+\infty} F(s) G(\omega-s) \mathrm{d} s \\
+&=\frac{1}{2 \pi} F(\omega) * G(\omega) .
+\end{aligned}</script><p>称式 (7-48)为时域卷积定理, 式 (7-49)为频域卷积定理.</p>
+<p>卷积定理建立了时域与频域之间最重要的联系, 即时域的卷积对应频域的乘积. 利用傅里叶变换的性质, 可以将复杂的卷积、微分和积分关系式表示为简单的代数关系式, 这将为我们对复杂系统的研究带来极大的方便.</p>
+<p>例 $7.18$ 求 $f(t)=t\ u(t) \mathrm{e}^{\mathrm{i} t}$ 的傅里叶变换, 其中 $u(t)$ 为单位阶跃函数.</p>
+<p>解 由于 $\mathscr{F}\left[\mathrm{e}^{\mathrm{i} t}\right]=2 \pi \delta(\omega-1)$,</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathscr{F}[t u(t)] &=\mathrm{i} \frac{\mathrm{d}}{\mathrm{d} \omega}[u(t)]=\mathrm{i} \frac{\mathrm{d}}{\mathrm{d} \omega}\left[\frac{1}{\mathrm{i} \omega}+\pi \delta(\omega)\right] \\
+&=-\frac{1}{\omega^{2}}+i \pi \delta^{\prime}(\omega) .
+\end{aligned}</script><p>由卷积定理,得</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathscr{F}[f(t)] &=\mathscr{F}\left[t u(t) \mathrm{e}^{\mathrm{i} t}\right]=\frac{1}{2 \pi} \mathscr{F}\left[\mathrm{e}^{\mathrm{i} t}\right] * \mathscr{F}[t u(t)] \\
+&=\frac{1}{2 \pi}[2 \pi \delta(\omega-1)] *\left[-\frac{1}{\omega^{2}}+\mathrm{i} \pi \delta^{\prime}(\omega)\right] \\
+&=\frac{1}{2 \pi} \int_{-\infty}^{+\infty} 2 \pi \delta(s-1) \cdot\left[-\frac{1}{(\omega-s)^{2}}+\mathrm{i} \pi \delta^{\prime}(\omega-s)\right] \mathrm{d} s \\
+&=\left[-\frac{1}{(\omega-1)^{2}}+\mathrm{i} \pi \delta^{\prime}(\omega-1)\right] .
+\end{aligned}</script><p>例 7.19 设 $\mathscr{F}[f(t)]=F(\omega)$, 若 $\lim <em>{t \rightarrow+\infty} \int</em>{-\infty}^{t} f(s) \mathrm{d} s=F(0) \neq 0$, 则</p>
+<script type="math/tex; mode=display">
+\mathscr{F}\left[\int_{-\infty}^{t} f(s) \mathrm{d} s\right]=\frac{F(\omega)}{\mathrm{i} \omega}+\pi F(0) \delta(0) .</script><p>证明 令 $g(t)=\int_{-\infty}^{t} f(s) \mathrm{d} s$, 则 $g(t)=f(t) * u(t)$.</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathscr{F}\left[\int_{-\infty}^{t} f(s) \mathrm{d} s\right] &=\mathscr{F}[f(t) * u(t)]=\mathscr{F}[f(t)] \cdot \mathscr{F}[u(t)] \\
+&=F(\omega)\left[\frac{1}{i \omega}+\pi \delta(\omega)\right] \\
+&=\frac{F(\omega)}{i \omega}+\pi F(0) \delta(\omega) .
+\end{aligned}</script><p>最后一个等式利用了 $\delta$ 函数乘时间函数性质, 即 $F(\omega) \delta(\omega)=F(0) \delta(\omega)$.</p>
+<h3 id="傅里叶变换的应用"><a href="#傅里叶变换的应用" class="headerlink" title="傅里叶变换的应用"></a>傅里叶变换的应用</h3><p>傅里叶变换在数学领域及工程技术等方面有着非常广泛的应用. 例如, 频谱分 析在现代声学、语音通信、声呐、地震、核科学,乃至生物医学工程等信号的研究发 挥着重要的作用. 傅里叶变换也是求解微分、积分方程、数学物理方程等问题的一 种有效数学工具. 运用傅里叶变换, 求某些数学物理方程的定解问题将在第 11 章 中作详细介绍. 以下仅举例说明傅里叶变换在求解常微分方程和积分方程中的 应用.</p>
+<p>例 $7.20$ 求解二阶常系数非齐次常微分方程</p>
+<script type="math/tex; mode=display">
+x^{\prime \prime}(t)-x(t)=-f(t),-\infty<t<+\infty,</script><p>其中 $f(t)$ 为已知函数.</p>
+<p>解 记 $\mathscr{F}[x(t)]=X(\omega), F(\omega)=\mathscr{F}[f(t)]$. 方程两端作傅里叶变换, 并利用 微分性, 得</p>
+<script type="math/tex; mode=display">
+-\omega^{2} X(\omega)-X(\omega)=-F(\omega) .</script><p>即</p>
+<script type="math/tex; mode=display">
+X(\omega)=\frac{F(\omega)}{1+\omega^{2}} .</script><p>上式两端求傅里叶逆变换, 并利用卷积定理, 得</p>
+<script type="math/tex; mode=display">
+x(t)=\mathscr{F}^{-1}\left[\frac{F(\omega)}{1+\omega^{2}}\right]=\mathscr{F}^{-1}\left[\frac{1}{1+\omega^{2}}\right] * \mathscr{F}^{-1}[F(\omega)] .</script><p>由例 $7.15$ 知</p>
+<script type="math/tex; mode=display">
+\mathscr{F}\left[\mathrm{e}^{-|t|}\right]=\frac{2}{1+\omega^{2}} .</script><p>从而</p>
+<script type="math/tex; mode=display">
+x(t)=\frac{1}{2} \mathrm{e}^{-|t|} * f(t)=\frac{1}{2} \int_{-\infty}^{+\infty} f(\xi) \mathrm{e}^{-|t-\xi|} \mathrm{d} \xi .</script><p>例 $7.21$ 求积分方程</p>
+<script type="math/tex; mode=display">
+\int_{0}^{+\infty} x(\omega) \sin \omega t \mathrm{~d} \omega=\mathrm{e}^{-t}(t>0) .</script><p>解 积分方程等价于</p>
+<script type="math/tex; mode=display">
+\frac{2}{\pi} \int_{0}^{+\infty} x(\omega) \sin \omega t \mathrm{~d} \omega=\frac{2}{\pi} \mathrm{e}^{-t} .</script><p>由傅里叶正弦变换可知, $\frac{2}{\pi} \mathrm{e}^{-t}$ 为 $x(\omega)$ 的傅里叶正弦逆变换. 从而有</p>
+<script type="math/tex; mode=display">
+x(\omega)=\int_{0}^{+\infty} \frac{2}{\pi} \mathrm{e}^{-t} \sin \omega t \mathrm{~d} t .</script><p>记 $I=\int_{0}^{+\infty} \mathrm{e}^{-t} \sin \omega t \mathrm{~d} t$, 分部积分二次, 得 $I=\frac{\omega}{1+\omega^{2}}$, 所以</p>
+<script type="math/tex; mode=display">
+x(\omega)=\frac{2}{\pi} \cdot \frac{\omega}{1+\omega^{2}} .</script><p>例 $7.22$ 求解下列积分方程</p>
+<script type="math/tex; mode=display">
+\int_{-\infty}^{+\infty} \mathrm{e}^{-|t-\xi|} x(\xi) \mathrm{d} \xi=f(t),</script><p>其中</p>
+<script type="math/tex; mode=display">
+f(t)=\left\{\begin{array}{l}
+\mathrm{e}^{-t}-\frac{1}{2} \mathrm{e}^{-2 t}, t \geqslant 0, \\
+\mathrm{e}^{t}-\frac{1}{2} \mathrm{e}^{2 t}, t<0 .
+\end{array}\right.</script><p>解 $\quad$ 记 $\mathscr{F}[x(t)]=X(\omega), F(\omega)=\mathscr{F}[f(t)]$.</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+F(\omega)=& \mathscr{F}[f(t)]=\int_{-\infty}^{+\infty} f(t) \mathrm{e}^{-\mathrm{i} \omega t} \mathrm{~d} t \\
+=& \int_{-\infty}^{0}\left(\mathrm{e}^{t}-\frac{1}{2} \mathrm{e}^{2 t}\right) \mathrm{e}^{-\mathrm{i} \omega t} \mathrm{~d} t+\int_{0}^{+\infty}\left(\mathrm{e}^{-t}-\frac{1}{2} \mathrm{e}^{-2 t}\right) \mathrm{e}^{-\mathrm{i} \omega t} \mathrm{~d} t \\
+=&\left.\frac{1}{(1-\mathrm{i} \omega)} \mathrm{e}^{(1-\mathrm{i} \omega) t}\right|_{-\infty} ^{0}-\left.\frac{1}{2} \frac{1}{(2-\mathrm{i} \omega)} \mathrm{e}^{(2-\mathrm{i} \omega) t}\right|_{-\infty} ^{0}+\\
+&\left.\frac{1}{-(1+\mathrm{i} \omega)} \mathrm{e}^{-(1+i \omega) t}\right|_{0} ^{+\infty}+\left.\frac{1}{2} \frac{1}{(2+\mathrm{i} \omega)} \mathrm{e}^{(2+\mathrm{i} \omega) t}\right|_{0} ^{+\infty} \\
+=& \frac{1}{(1-\mathrm{i} \omega)}-\frac{1}{2(2-\mathrm{i} \omega)}+\frac{1}{(1+\mathrm{i} \omega)}-\frac{1}{2(2+\mathrm{i} \omega)} \\
+=& \frac{6}{\left(\omega^{2}+4\right)\left(\omega^{2}+1\right)} .
+\end{aligned}</script><p>由例 $7.15$ 知</p>
+<script type="math/tex; mode=display">
+\mathscr{F}\left[\mathrm{e}^{-|t|}\right]=\frac{2}{1+\omega^{2}} .</script><p>方程两端求傅里叶变换, 并利用卷积性, 得</p>
+<script type="math/tex; mode=display">
+\frac{2}{1+\omega^{2}} X(\omega)=F(\omega)=\frac{6}{\left(\omega^{2}+4\right)\left(\omega^{2}+1\right)},</script><p>从而得</p>
+<script type="math/tex; mode=display">
+X(\omega)=\frac{3}{\left(\omega^{2}+4\right)} .</script><p>求傅里叶逆变换</p>
+<script type="math/tex; mode=display">
+x(t)=\mathscr{F}^{-1}\left[\frac{3}{\omega^{2}+4}\right]=\frac{3}{2 \pi} \int_{-\infty}^{+\infty} \frac{1}{\omega^{2}+4} \mathrm{e}^{\mathrm{i} \omega t} \mathrm{~d} \omega .</script><p>当 $t \geqslant 0$ 时</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+x(t) &=\frac{3}{2 \pi} \int_{-\infty}^{+\infty} \frac{1}{\omega^{2}+4} \mathrm{e}^{\mathrm{i} \omega t} \mathrm{~d} \omega=\frac{3}{2 \pi} \cdot 2 \pi \mathrm{i} \operatorname{Res}\left[\frac{1}{\omega^{2}+4} \mathrm{e}^{\mathrm{i} \omega t}, 2 \mathrm{i}\right] \\
+&=3 \mathrm{i} \times \frac{\mathrm{e}^{-2 t}}{4 \mathrm{i}}=\frac{3}{4} \mathrm{e}^{-2 t} .
+\end{aligned}</script><h2 id="傅里叶积分的一些公式"><a href="#傅里叶积分的一些公式" class="headerlink" title="傅里叶积分的一些公式"></a>傅里叶积分的一些公式</h2><p>显然可以采用留数定理计算此类积分</p>
+<ol>
+<li><script type="math/tex; mode=display">\color {red}\int_{0}^{+\infty}\frac{\mathrm{cos}\,\omega t}{a^{2}\,+\,t^{2}}\,\mathrm{d}t=\frac{\pi}{2a}\,\mathrm{e}^{-a|\omega|}</script><p><font color="#c00000">证明</font> 如下<br>求 $f(t)=\mathrm{e}^{-\beta|t|}\left(\beta&gt;0\right)$ 的傅里叶积分：<br><font color="#c00000">Solution</font>: 由于 $f(t)$ 是偶函数,</p>
+<script type="math/tex; mode=display">f(t)=\dfrac{2}{\pi}\int_0^{+\infty}\left[f(\tau)\cos\text{$\tau$}\right]\cos\text{$\omega$}=\dfrac{2}{\pi}\int_0^{+\infty}\left[e^{-\beta t}\cos\text{$\tau$}\right]\cos\text{$\omega$}.</script><p>记： $I=\int_{0}^{+\infty}\mathrm{e}^{-\beta\tau}\cos\omega\tau\mathrm{d}\tau$.经过两次分部积分有</p>
+<script type="math/tex; mode=display">I=\dfrac{\beta}{\omega^2+\beta^2}\:,</script><p>所以，</p>
+<script type="math/tex; mode=display">f(t)=\dfrac{2\beta}{\pi}\int_0^{+\infty}\dfrac{\cos\omega t}{\omega^2+\beta^2}\mathrm{d}\omega</script><p>由此即可得</p>
+<script type="math/tex; mode=display">\int_{0}^{+\infty}\dfrac{\cos\omega t}{\omega^2+\beta^2}\:\mathrm{d}\omega=\dfrac{\pi}{2\beta}\mathrm{e}^{-\beta|t|}</script></li>
+<li><script type="math/tex; mode=display">
+\begin{aligned}
+F(\omega)=\mathscr{F}\left[\mathrm{e}^{-\mathrm{i} t}\right]=2 \pi \delta(\omega+1), & \text { 由位移性质, 得 } \\
+\mathscr{F}\left[\mathrm{e}^{-\mathrm{i} t} \sin t\right] &=\frac{\mathrm{i}}{2}[F(\omega+1)-F(\omega-1)] . \\
+&=\mathrm{i} \pi[\delta(\omega+2)-\delta(\omega)] .
+\end{aligned}</script><p>显然类似的有 $\color {red} \mathscr{F\left[e^{i t}\right]}=2\pi\delta(\omega-1)$ 其实依靠的是 $\delta$ 函数的傅里叶逆变换.</p>
+</li>
+<li><p>关于 $\delta$ 函数的导数的傅里叶逆变换</p>
+<script type="math/tex; mode=display">\color {red}\begin{aligned}f(t)&=\mathcal{F}^{-1}[F(\omega)]=\frac{1}{2\pi}\int_{-\infty}^{+\infty}-2\pi\delta''(\omega)\mathrm{e}^{\mathrm{i}\omega t}\mathrm{d}\omega\\ &=-\int_{-\infty}^{+\infty}\delta''(\omega)\mathrm{e}^{\mathrm{i}\omega t}\mathrm{d}\omega=-(\mathrm{e}^{\mathrm{i}\omega t})''\biggr|_{\omega=0}\\ &=t^2.\end{aligned}</script></li>
+</ol>
+<p>4.</p>
+<ol>
+<li>一种处理方法，当然也适合<u>逆变换</u><script type="math/tex; mode=display">\color {red}F(\omega)=\int_{-\infty}^{+\infty}\dfrac{1}{a^2+t^2}\mathrm{e}^{-\mathrm{i}\omega t}\mathrm{d}t=\int_{-\infty}^{+\infty}\dfrac{\cos\omega t}{a^2+t^2}\mathrm{d}t-\mathrm{i}\int_{-\infty}^{+\infty}\dfrac{\sin\omega t}{a^2+t^2}\mathrm{d}t</script></li>
+<li>一道卷积题目<script type="math/tex; mode=display">
+f(t)=\left\{\begin{array}{ll}
+\mathrm{e}^{-t}, & t \geq 0, \\
+0, & t<0,
+\end{array} \quad g(t)=\left\{\begin{array}{ll}
+\sin t, & 0 \leq t \leq \frac{\pi}{2}, \\
+0, & \text { 否则. }
+\end{array}\right.\right.</script></li>
+</ol>
+<p>计算卷积 $f(t) <em> g(t)$ .<br>解 由于 $f(t){</em>} g(t)=\int_{-\infty}^{+\infty} f(s) g(t-s) \mathrm{d} s$ , 当 $t-s \geq 0$ 时, 若 $t&lt;0$ , 则 $f(s)=0$ ,<br>故 $f(t) * g(t)=0$ . 若 $0&lt;t \leq \frac{\pi}{2}$, $0&lt;s \leq t$ , 则</p>
+<script type="math/tex; mode=display">f(t)* g(t)=\int_{0}^{t} f(s) g(t-s) \mathrm{d} s=\int_{0}^{t} e^{-s} \cdot \sin (t-s) \mathrm{d} s .</script><p>若 $t&gt;\frac{\pi}{2}, 0 \leq t-s \leq \frac{\pi}{2} . \Rightarrow t-\frac{\pi}{2} \leq s \leq t$ . 则 $f(t) * g(t)=\int_{t-\frac{\pi}{2}}^{t} \mathrm{e}^{-s} \cdot \sin (\mathrm{t}-\mathrm{s}) \mathrm{d} s$ . 故</p>
+<script type="math/tex; mode=display">f(t)*g(t)=\begin{cases}0,&t<0, \\ \dfrac{1}{2}\big(\sin t-\cos t+\mathrm e^{-t}\big),&0<t\le\dfrac{\pi}{2},\\ \dfrac{1}{2}\mathrm e^{-t}\big(1+\mathrm e^{\frac{\pi}{2}}\big),&t>\dfrac{\pi}{2}.\end{cases}</script><h3 id="积累公式"><a href="#积累公式" class="headerlink" title="积累公式"></a>积累公式</h3><ul>
+<li><p>狄利克雷 积分</p>
+<script type="math/tex; mode=display">\color {red}\int_0^{+\infty}\dfrac{\sin x}{x}\:dx=\dfrac{\pi}{2}</script></li>
+<li><p>$\sin t$ 和 $\cos t$ 的（正弦和余弦）傅里叶积分</p>
+<script type="math/tex; mode=display">f(t)=\left\{\begin{matrix}{\operatorname{cos}t,}&{\mid t\mid\leqslant\pi,}\\ {0,}&{\mid t\mid>\pi,}\\ \end{matrix}\right.</script><script type="math/tex; mode=display">f(t)=\dfrac{2}{\pi}\int_{0}^{+\infty}\frac{\omega\sin\omega\pi\cos\omega t}{1-\omega^{2}}\mathrm{d}\omega</script></li>
+</ul>
+<script type="math/tex; mode=display">f(t)=\begin{cases}sin t,&\mid t\mid\leqslant\pi,\\ 0,&\mid t\mid>\pi,\end{cases}</script><script type="math/tex; mode=display">f(t)=\dfrac{2}{\pi}\int_0^{+\infty}\dfrac{\sin\omega\pi\sin\omega t}{1-\omega^2}\mathrm{d}\omega,</script><ul>
+<li>$f(t)=\mathrm{e}^{-a t}$正弦和余弦傅里叶变换分别为</li>
+</ul>
+<script type="math/tex; mode=display">F_{s}(\omega)=\frac{\omega}{\omega^{2}+a^{2}};F_{c}(\omega)=\frac{a}{\omega^{2}+a^{2}},</script><ul>
+<li>已知$\mathscr F[f(t)] = F(\omega)$，求下列函数的傅里叶变换<script type="math/tex; mode=display">g(t)=t f^{\prime}(t),\operatorname*{lim}_{|t|\rightarrow+\infty}f(t)=0.</script>$\mathscr F[g(t)] = \mathrm{i}  \mathscr{F}[tf^{\prime}(t)]$ 之后就很明显了。答案是<script type="math/tex">-F(\omega)-\omega\frac{\mathrm{d}}{\mathrm{d}\omega}\bigl[F(\omega)\bigr].</script></li>
+</ul>
+<h3 id="题目思路"><a href="#题目思路" class="headerlink" title="题目思路"></a>题目思路</h3><h4 id="解积分方程"><a href="#解积分方程" class="headerlink" title="解积分方程"></a>解积分方程</h4><script type="math/tex; mode=display">\int_{-\infty}^{+\infty}\dfrac{y(\xi)}{\left(t-\xi\right)^2+a^2}\mathrm{d}\xi=\dfrac{1}{t^2+b^2},\quad0<a<b;</script><p>方程左端可以看成未知函数 $y(t)$ 与函数 $\frac{1}{a^{2}+t^{2}}$ 的卷积. 记 $Y(\omega)=\mathscr{F}[y(t)]$ , 则</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathscr{F}\left[\int_{-\infty}^{+\infty} \frac{y(\xi)}{(t-\xi)^{2}+a^{2}} \mathrm{~d} \xi\right] &=\mathscr{F}\left[y(\mathrm{t})^{*} \frac{1}{a^{2}+t^{2}}\right] \\
+&=Y(\omega) \mathscr{F}\left[\frac{1}{a^{2}+t^{2}}\right]
+\end{aligned}</script><h4 id="计算变换"><a href="#计算变换" class="headerlink" title="计算变换"></a>计算变换</h4><ol>
+<li>利用留数计算逆变换</li>
+</ol>
+<script type="math/tex; mode=display">x(t)=\mathscr{F}^{-1}[X(\omega)]=\frac{-\mathrm{i}}{\pi} \int_{-\infty}^{+\infty} \frac{\omega}{\left(\omega^{2}+1\right)\left(\omega^{2}+9\right)} \mathrm{e}^{\mathrm{i} \omega t} d \omega .</script><p>记 $R(z)=\dfrac{z}{\left(z^{2}+1\right)\left(z^{2}+9\right)}$ , 则 $R(z)$ 在上半平面只有两个一阶极点 $z<em>{1}=\mathrm{i}$ 和 $z</em>{2}=3 \mathrm{i}$ . 且</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\operatorname{Re} s\left[R(z) \mathrm{e}^{\mathrm{i} z t}, z_{1}\right]=\lim _{z \rightarrow \mathrm{i}}(z-\mathrm{i}) \frac{z}{\left(z^{2}+1\right)\left(z^{2}+9\right)} \mathrm{e}^{\mathrm{i} z t}=\frac{\mathrm{e}^{-t}}{16} . \\
+\operatorname{Re}\left[R(z) \mathrm{e}^{\mathrm{i} z t}, z_{2}\right]=\lim _{z \rightarrow 3 \mathrm{i}}(z-3 \mathrm{i}) \frac{z}{\left(z^{2}+1\right)\left(z^{2}+9\right)} \mathrm{e}^{\mathrm{i} z t}=-\frac{\mathrm{e}^{-3 t}}{16} .
+\end{array}</script><p>因此, 当 $t&gt;0$ 时,</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+x(t) &=\frac{-\mathrm{i}}{\pi} \cdot 2 \pi \mathrm{i} \sum_{k=1}^{2} \operatorname{Re} s\left[R(z) \mathrm{e}^{\mathrm{i} z t}\right]=\frac{-\mathrm{i}}{\pi} \cdot 2 \pi \mathrm{i}\left(\frac{1}{16} \mathrm{e}^{-t}-\frac{1}{16} \mathrm{e}^{-3 t}\right) \\
+&=\frac{1}{8}\left(\mathrm{e}^{-t}-\mathrm{e}^{-3 t}\right) .
+\end{aligned}</script><p>当 $t<0$ 时, 令 $\omega=-s$ , 由 $t>0$ 的计算过程, 得</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+x(t) &=\frac{-\mathrm{i}}{\pi} \int_{-\infty}^{+\infty} \frac{\omega}{\left(\omega^{2}+1\right)\left(\omega^{2}+9\right)} \mathrm{e}^{\mathrm{i} \omega t} d \omega \\
+&=\frac{\mathrm{i}}{\pi} \int_{-\infty}^{+\infty} \frac{s}{\left(s^{2}+1\right)\left(s^{2}+9\right)} \mathrm{e}^{\mathrm{i} s(-t)} d s \\
+&=\frac{\mathrm{i}}{\pi} \cdot 2 \pi \mathrm{i}\left(\frac{1}{16} \mathrm{e}^{t}-\frac{1}{16} \mathrm{e}^{3 t}\right)=\frac{1}{8}\left(\mathrm{e}^{3 t}-\mathrm{e}^{t}\right) .
+\end{aligned}</script><p>当 $t=0$ 时, 由于 $R(\omega)=\frac{\omega}{\left(\omega^{2}+1\right)\left(\omega^{2}+9\right)}$ 为奇函数, 所以</p>
+<script type="math/tex; mode=display">x(t)=\frac{-\mathrm{i}}{\pi} \int_{-\infty}^{+\infty} \frac{\omega}{\left(\omega^{2}+1\right)\left(\omega^{2}+9\right)} d \omega=0 .</script><ol>
+<li><p>综合利用性质</p>
+</li>
+<li><p>结合已经积累的公式迅速凑出来</p>
+</li>
+</ol>
+<script type="math/tex; mode=display">\begin{aligned}y(t)&=\mathscr{F}^{-1}\left[\frac{a}{b}\mathrm{e}^{-(b-a)\omega t}\right]=\frac{a}{b}\frac{b-a}{\pi}\mathscr{F}^{-1}\left[\frac{\pi}{b-a}\mathrm{e}^{-(b-a)\omega t}\right]\\ &=\frac{a(b-a)}{\pi b\left[t^2+(b-a)^2\right]}.\end{aligned}</script><h2 id="拉普拉斯变换的性质"><a href="#拉普拉斯变换的性质" class="headerlink" title="拉普拉斯变换的性质"></a>拉普拉斯变换的性质</h2><ul>
+<li><p>线性性质 $\mathcal{L}[a f(t)+b g(t)]=a F(p)+ b G(p) ; \mathcal{L}^{-1}[a F(p)+b G(p)]=a f(t)+b g(t)$</p>
+</li>
+<li><p>相似性质<br>$\mathcal{L}[f(a t)]=\frac{1}{a} F\left(\frac{p}{a}\right)(a&gt;0), \mathcal{L}^{-1}[F(a p)]= \frac{1}{a} f\left(\frac{t}{a}\right)$</p>
+</li>
+<li><p>位移性质<br>性质  8.4  平移性质: 设  $F(p)=\mathscr{L}[f(t)]$ , 对于任意复常数  $p_{0}$ , 有</p>
+</li>
+</ul>
+<script type="math/tex; mode=display">F\left(p-p_{0}\right)=\mathscr{L}\left[\mathrm{e}^{p_{0} t} f(t)\right]$$,
+
+或
+
+$$\mathscr{L}^{-1}\left[F\left(p-p_{0}\right)\right]=\mathrm{e}^{p_{0} t} f(t)</script><p>证明</p>
+<script type="math/tex; mode=display">\mathscr{L}\left[\mathrm{e}^{\mathrm{e}_{0} t} f(t)\right]=\int_{0}^{+\infty} \mathrm{e}^{p_{0} t} \mathrm{e}^{-p t} f(t) \mathrm{d} t=\int_{0}^{+\infty} f(t) \mathrm{e}^{-\left(p-p_{0}\right) t} \mathrm{~d} t=F\left(p-p_{0}\right) .</script><p>利用基本函数的拉氏变换及平移性质可得</p>
+<script type="math/tex; mode=display">\begin{array}{c}
+\mathscr{L}\left[\mathrm{e}^{-p_{0} t} \sin k t\right]=\frac{k}{\left(p+p_{0}\right)^{2}+k^{2}}, \mathscr{L}\left[\mathrm{e}^{-p_{0} t} \cos k t\right]=\frac{p+p_{0}}{\left(p+p_{0}\right)^{2}+k^{2}}, \\
+\mathscr{L}\left[\mathrm{e}^{-p_{0} t} \sinh k t\right]=\frac{k}{\left(p+p_{0}\right)^{2}-k^{2}}, \mathscr{L}\left[\mathrm{e}^{-p_{0} t} \cosh k t\right]=\frac{p+p_{0}}{\left(p+p_{0}\right)^{2}-k^{2}}, \\
+\mathscr{L}\left[\mathrm{e}^{-p_{0} t} t^{m}\right]=\frac{m !}{\left(p+p_{0}\right)^{m+1}} .
+\end{array}</script><ul>
+<li>延迟性质<br>性质  8.3  延迟性质: 设  $F(p)=\mathscr{L}[f(t)]$ , 对于任意非负实数  $t_{0}$ , 有</li>
+</ul>
+<script type="math/tex; mode=display">\mathscr{L}\left[f\left(t-t_{0}\right) u\left(t-t_{0}\right)\right]=\mathrm{e}^{-p t_{0}} F(p),</script><p>或</p>
+<script type="math/tex; mode=display">\mathscr{L}^{-1}\left[\mathrm{e}^{-p t_{0}} F(p)\right]=f\left(t-t_{0}\right) u\left(t-t_{0}\right) .</script><p>证明 令  $u=t-t_{0}$ , 则</p>
+<script type="math/tex; mode=display">\begin{aligned}
+\mathscr{L}\left[f\left(t-t_{0}\right) u\left(t-t_{0}\right)\right] & =\int_{0}^{+\infty} f\left(t-t_{0}\right) u\left(t-t_{0}\right) \mathrm{e}^{-p t} \mathrm{~d} t \\
+& =\int_{t_{0}}^{+\infty} f\left(t-t_{0}\right) \mathrm{e}^{-p t} \mathrm{~d} t=\int_{0}^{+\infty} f(u) \mathrm{e}^{-p(u+t)} \mathrm{d} u \\
+& =\mathrm{e}^{-p t_{0}} \int_{0}^{+\infty} f(u) \mathrm{e}^{-p u} \mathrm{~d} u=\mathrm{e}^{-p t_{0}} F(p)
+\end{aligned}</script><ul>
+<li>微分性质<br>$F^{\prime}(p)=-\mathcal{L}\big[t f(t)\big].$</li>
+</ul>
+<script type="math/tex; mode=display">\mathscr{L}\left[f^{(n)}\right]=p^{n} F(p)-p^{n-1} f(0)-p^{n-2} f^{\prime}(0)-\cdots-f^{(n-1)}(0), \quad(8-13)</script><p>其中  $f^{(k)}(0)=\lim _{t \rightarrow 0^{-}} f^{(k)}(t)$ . 特别地, 若  $f(0)=f^{\prime}(0)=f^{\prime \prime}(0)=\cdots=f^{(n-1)}(0)=  0$ , 式^ (8-13) 简化为</p>
+<script type="math/tex; mode=display">
+\mathscr{L}\left[f^{(n)}(t)\right]=p^{n} F(p) . \quad(8-14)</script><ul>
+<li>积分性质<br>性质  8.6  积分性质: 设  $F(p)=\mathscr{L}[f(t)]$ , 则</li>
+</ul>
+<script type="math/tex; mode=display">\mathscr{L}\left[\int_{0}^{t} f(s) \mathrm{d} s\right]=\frac{F(p)}{p}$$ .
+
+若  $\int_{p}^{+\infty} F(s) \mathrm{d} s$  收敛, 则
+
+$$\int_{p}^{+\infty} F(s) \mathrm{d} s=\mathscr{L}\left[\frac{f(t)}{t}\right]$$ .
+- 周期性质
+
+
+
+
+- 卷积性质
+定理  8.2  设  $f_{1}(t)$  和  $f_{2}(t)$  满足拉普拉斯变换存在定理条件, 记  $\mathscr{L}\left[f_{1}(t)\right]=   F_{1}(p), \mathscr{L}\left[f_{2}(t)\right]=F_{2}(p)$ , 则  $f_{1} * f_{2}$  的拉普拉斯变换存在, 且
+
+$$\mathscr{L}\left[f_{1} * f_{2}\right]=\mathscr{L}\left[f_{1}\right] \mathscr{L}\left[f_{2}\right]=F_{1}(p) F_{2}(p), \quad(8-22)</script><p>或</p>
+<script type="math/tex; mode=display">\mathscr{L}^{-1}\left[F_{1}(p) F_{2}(p)\right]=f_{1}(t) * f_{2}(t)</script><h2 id="拉普拉斯变换的基本公式"><a href="#拉普拉斯变换的基本公式" class="headerlink" title="拉普拉斯变换的基本公式"></a>拉普拉斯变换的基本公式</h2><ul>
+<li>H  是单位阶跃函数 (Heaviside step function)<br>  例1:  $\mathcal{L}[H(t)]=\dfrac{1}{p^{1}} \quad(\operatorname{Re} p&gt;0)$<br>  例2:  $\mathcal{L}\left[t^{n} H(t)\right]=\dfrac{n !}{p^{n+1}} \quad(\operatorname{Re} p&gt;0)$<br>  例3:  $\mathcal{L}\left[t^{n} e^{s t} H(t)\right]=\dfrac{n !}{(p-s)^{n+1}} \quad(\operatorname{Re} p&gt;\operatorname{Re} s)$<br>  例4:  $\mathcal{L}[\sin (\omega t) H(t)]=\dfrac{\omega}{p^{2}+\omega^{2}}(\operatorname{Re} p&gt;|\operatorname{Im} \omega|)$<br>  例5:  $\mathcal{L}[\cos (\omega t) H(t)]=\dfrac{p}{p^{2}+\omega^{2}}(\operatorname{Re} p&gt;|\operatorname{Im} \omega|)$ <script type="math/tex; mode=display">\mathcal{L}[\mathrm{e}^{-\alpha t}\sin\beta t]=\dfrac{\beta}{\left(p+\alpha\right)^2+\beta^2}</script><script type="math/tex; mode=display">\mathcal{L}[\mathbf{e}^{-\alpha t}\operatorname{cos}\beta t]=\frac{p+\alpha}{\left(p+\alpha\right)^{2}+\beta^{2}}</script>  一般的幂函数 $t^{m}$ ($m&gt;-1, m$  不一定是整数)  的拉普拉斯变换</li>
+</ul>
+<script type="math/tex; mode=display">\mathcal{L}\left[t^{m}\right]=\frac{\Gamma(m+1)}{p^{m+1}}$$,
+
+其中  $\Gamma(x)=\int_{0}^{+\infty} e^{-t} t^{x-1} d t$.
+特别地,  $\mathcal{L}\left[t^{-\frac{1}{2}}\right]=\dfrac{\sqrt{\pi}}{\sqrt{p}}$ .
+
+### 常用处理方法
+
+
+
+- 类型1==**拆分式**==
+
+$$\begin{aligned}
+F(p) & =\frac{p^{2}+4 p+4}{\left(p^{2}+4 p+13\right)^{2}}=\frac{(p+2)^{2}+3^{2}-3^{2}}{\left[(p+2)^{2}+3^{2}\right]^{2}} \\
+& =\frac{1}{(p+2)^{2}+3^{2}}-\left[\frac{3}{(p+2)^{2}+3^{2}}\right]^{2} \\
+& =\frac{1}{(p+2)^{2}+3^{2}}-\frac{1}{2}\left[\frac{1}{(p+2)^{2}+3^{2}}+\frac{\mathrm{d}}{\mathrm{d} p}\left(\frac{p+2}{(p+2)^{2}+3^{2}}\right)\right] \\
+& =\frac{1}{2} \frac{1}{(p+2)^{2}+3^{2}}-\frac{1}{2} \frac{\mathrm{d}}{\mathrm{d} p}\left(\frac{p+2}{(p+2)^{2}+3^{2}}\right) .
+\end{aligned}</script><p>所以</p>
+<script type="math/tex; mode=display">\begin{aligned}
+f(t) & =\mathscr{L}^{-1}[F(p)]\\&=\frac{1}{6} \mathscr{L}^{-1}\left[\frac{3}{(p+2)^{2}+3^{2}}\right]-\frac{1}{2} \mathscr{L}^{-1}\left[\frac{d}{d p}\left(\frac{p+2}{(p+2)^{2}+3^{2}}\right)\right] \\
+& =\frac{1}{6} \mathrm{e}^{-2 t} \sin 3 t+\frac{1}{2} t^{-2 t} \cos 3 t .
+\end{aligned}</script><ul>
+<li>类型2==<strong>利用卷积</strong>==，此过程经常需要使用和差化积</li>
+</ul>
+<p>取  $F<em>{1}(p)=\frac{p}{p^{2}+a^{2}}, F</em>{2}(p)=\frac{p}{p^{2}+a^{2}}$ , 则</p>
+<p>$f<em>{1}(t)=\mathscr{L}^{-1}\left[F</em>{1}(p)\right]=\cos a t, f<em>{2}(t)=\mathscr{L}^{-1}\left[F</em>{2}(p)\right]=\cos a t$ .</p>
+<p>从而</p>
+<script type="math/tex; mode=display">\begin{aligned}
+\mathscr{L}^{-1}\left[\frac{p^{2}}{\left(p^{2}+a^{2}\right)^{2}}\right] & =\mathscr{L}^{-1}\left[F_{1}(p)\right] * \mathscr{L}^{-1}\left[F_{2}(p)\right]=\cos a t * \cos a t \\
+& =\int_{0}^{t} \cos a \tau \cdot \cos a(t-\tau) \mathrm{d} \tau\\&=\frac{1}{2} \int_{0}^{t}[\cos (a t-2 a \tau)+\cos a t] \mathrm{d} \tau \\
+& =\frac{1}{2 a}(a t \cos a t+\sin a t) .
+\end{aligned}</script><ul>
+<li>逆变换之只有一个高阶极点-延迟性质</li>
+</ul>
+<p>$Y(p)=\frac{6}{(p+1)^{4}}$</p>
+<p>利用  $\mathscr{L}\left[t^{3}\right]=\frac{3 !}{p^{4}}$ , 由位移性质, 求逆变换</p>
+<script type="math/tex; mode=display">y(t)=\mathscr{L}^{-1}[Y(p)]=\mathscr{L}^{-1}\left[\frac{6}{(p+1)^{4}}\right]=t^{3} \mathrm{e}^{-t}</script><ul>
+<li>求无穷积分</li>
+</ul>
+<script type="math/tex; mode=display">\begin{array}{l}G(p)=\mathcal{L}\left[\dfrac{f\left(t\right)}{t}\right]&=\int_{0}^{+\infty}\dfrac{f(t)}{t}e^{-p t}d t\\=\int_p^{+\infty}\mathcal{L}[f(t)]ds\end{array}</script><script type="math/tex; mode=display">\begin{aligned}\int_{0}^{+\infty}t^3\mathbf{e}^{-t}\sin t\mathbf{d}t&=-\operatorname{Im}\int_{0}^{+\infty}t^3\mathbf{e}^{-t}\mathbf{e}^{-t}\mathbf{d}t=-\operatorname{Im}\int_{0}^{+\infty}t^3\mathbf{e}^{-(+t)t}\mathbf{d}t\\ &=-\operatorname{Im}\left(\varphi[t^3]_{y=1+t}\right)=-\operatorname{Im}\left(\frac{3!}{(1+i)^4}\right)\\ &=-\operatorname{Im}\left(-\frac{3}{2}\right)=0.\end{aligned}</script><ul>
+<li>难题之证明题</li>
+</ul>
+<p>证明 由于 $\mathscr{L}\left[\frac{1}{\sqrt{t}}\right]=\frac{\sqrt{\pi}}{\sqrt{p}}, \mathscr{S}\left[\mathrm{e}^t\right]=\frac{1}{p-1}$, 所以 $\frac{1}{\sqrt{p}(p-1)}=\mathscr{L}\left[\frac{1}{\sqrt{\pi t}}\right] \cdot \mathscr{L}\left[\mathrm{e}^t\right]$. 从 而</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathscr{L}^{-1}\left[\frac{1}{\sqrt{p}(p-1)}\right] & =\frac{1}{\sqrt{\pi} \sqrt{t}} * \mathrm{e}^t=\frac{1}{\sqrt{\pi}} \int_0^t \frac{1}{\sqrt{s}} \mathrm{e}^{t-s} \mathrm{~d} s \\
+& =\frac{\mathrm{e}^t}{\sqrt{\pi}} \int_0^t \frac{1}{\sqrt{s}} \mathrm{e}^{-s} \mathrm{~d} s
+\end{aligned}</script><p>令 $\sqrt{s}=y$, 则 $\mathrm{d} s=2 y \mathrm{~d} y$, 从而</p>
+<script type="math/tex; mode=display">
+\mathscr{L}^{-1}\left[\frac{1}{\sqrt{p}(p-1)}\right]=\frac{\mathrm{e}^t}{\sqrt{\pi}} \int_0^t \frac{1}{\sqrt{s}} \mathrm{e}^{-s} \mathrm{~d} s=\frac{2 \mathrm{e}^t}{\sqrt{\pi}} \int_0^{\sqrt{t}} \mathrm{e}^{-y^2} \mathrm{~d} y .</script><p>若记 $F(p)=\frac{1}{\sqrt{p}(p-1)}$, 则 $\frac{1}{p \sqrt{p+1}}=F(p+1)$. 从而</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathscr{L}^{-1}\left[\frac{1}{p \sqrt{p}}\right] & =\mathscr{L}^{-1}[F(p+1)]=\mathrm{e}^{-t} \mathscr{L}^{-1}[F(p)] \\
+& =\mathrm{e}^{-t} \frac{2 \mathrm{e}^t}{\sqrt{\pi}} \int_0^{\sqrt{t}} \mathrm{e}^{-y^2} \mathrm{~d} y=\frac{2}{\sqrt{\pi}} \int_0^{\sqrt{t}} \mathrm{e}^{-y^2} \mathrm{~d} y
+\end{aligned}</script></div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-01-17</span>
+            
+                <span>该篇文章被 GanMocai</span>
+            
+            
+                <span>打上标签:
+                    
+                    
+                        <a href='/tags/%E5%AD%A6%E4%B9%A0/'>
+                            学习
+                        </a>
+                    
+                </span>
+             
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E5%AD%98%E6%A1%A3/'>
+                            存档
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2024/01/22/%E9%9B%AA%E6%97%A5%E6%B6%89%E6%94%BF%E6%9D%82%E8%B0%88/'>雪日涉政杂谈</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2024/01/17/%E6%AE%8B%E7%BC%BA%E7%AC%94%E8%AE%B0%E4%B9%8B%E9%A9%AC%E5%8E%9F%E5%8D%8E%E5%B8%88%E5%A4%A7/">残缺笔记之马原华师大</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 2022-2025 China 
+
+            
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+    </body>
+</html>
