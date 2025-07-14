@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="Git 在 Windows 上大小写不敏感" />
+    <meta name="description" content="LaTeX 迁移 Word：公式" />
     <meta name="hexo-theme-A4" content="v1.9.7" />
     <link rel="alternate icon" type="image/webp" href="/img/favicon.png">
     <title>GanMocai&#39;s Blog | GanMocai的个人博客</title>
@@ -347,7 +347,7 @@
         
             
                 <div class="post-main-title" style="text-align: center;">
-                    Git 在 Windows 上大小写不敏感
+                    LaTeX 迁移 Word：公式
                 </div>
             
         
@@ -360,19 +360,19 @@
             <div class="post-head-meta-center">
         
                 
-                    <span>最近更新：2025-07-13</span> 
+                    <span>最近更新：2025-07-14</span> 
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：247</span>
+                     <span>字数总计：1.3k</span>
                 
                 
                     
                         &nbsp; | &nbsp;
                     
-                    <span>阅读估时：1分钟</span>
+                    <span>阅读估时：4分钟</span>
                 
                 
                     
@@ -388,38 +388,129 @@
     <div class="post-md">
         
             
-                
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Word-%E4%B8%AD%E6%89%B9%E9%87%8F%E6%9B%BF%E6%8D%A2-TeX-%E5%85%AC%E5%BC%8F%E5%88%86%E9%9A%94%E7%AC%A6"><span class="post-toc-text">Word 中批量替换 TeX 公式分隔符</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%83%8C%E6%99%AF%E9%97%AE%E9%A2%98"><span class="post-toc-text">背景问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E5%88%86%E6%AD%A5%E9%80%9A%E9%85%8D%E7%AC%A6%E6%9B%BF%E6%8D%A2%E6%B3%95-GUI%E6%93%8D%E4%BD%9C"><span class="post-toc-text">方法一：分步通配符替换法 (GUI操作)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%EF%BC%9A%E8%A7%84%E9%81%BFWord-Bug"><span class="post-toc-text">核心原理：规避Word Bug</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="post-toc-text">操作步骤</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E4%BD%BF%E7%94%A8VBA%E5%AE%8F%E4%B8%80%E9%94%AE%E6%9B%BF%E6%8D%A2"><span class="post-toc-text">方法二：使用VBA宏一键替换</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#VBA-%E4%BB%A3%E7%A0%81"><span class="post-toc-text">VBA 代码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E"><span class="post-toc-text">使用说明</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%87%8D%E8%A6%81%E9%A3%8E%E9%99%A9%E4%B8%8E%E5%AE%89%E5%85%A8%E6%8F%90%E7%A4%BA"><span class="post-toc-text">重要风险与安全提示</span></a></li></ol></li></ol></li></ol>
             
         
-        <div class=".article-gallery"><p>之前重新整理过博客文章，包括对一些文件名或者标签的更改，如首字母改为大写。当时就发现某些文章无法访问，但是在本地部署时可以正常访问。</p>
-<p>今天想起来解决，重新生成部署无效。查看了 GitHub 仓库中的文件后发现无法正常显示的网页的上级目录首字母依旧是小写的，基本确定无法正常访问的原因是大小写不对。</p>
-<p>于是找到解决方法：<a target="_blank" rel="noopener" href="https://www.windsings.com/post/e36fe130/">解决由于大小写敏感导致的Hexo页面404问题 | 且听风吟</a></p>
-<blockquote>
-<p>在Windows下，文件名和文件夹名字是大小写不敏感的，而在Linux下是大小写敏感的。</p>
+        <div class=".article-gallery"><h2 id="Word-中批量替换-TeX-公式分隔符"><a href="#Word-中批量替换-TeX-公式分隔符" class="headerlink" title="Word 中批量替换 TeX 公式分隔符"></a><strong>Word 中批量替换 TeX 公式分隔符</strong></h2><h3 id="背景问题"><a href="#背景问题" class="headerlink" title="背景问题"></a><strong>背景问题</strong></h3><p>在 Microsoft Word 中，需要将所有使用 $$$…$$$ 作为分隔符的行间TeX公式，批量替换为使用 <code>\[...\]</code> 的标准格式，以便 MathType 正常工作，将其转换为行间公式而非行内（内联）公式。标准的“查找与替换”功能在执行此任务时，可能会因Word自身的Bug而失败。</p>
+<p>本文档提供一种经过验证的解决方案：一种是绕过Bug的GUI操作方法。另外提供更稳定高效但尚未经验证的 VBA 宏方法。</p>
+<h3 id="方法一：分步通配符替换法-GUI操作"><a href="#方法一：分步通配符替换法-GUI操作" class="headerlink" title="方法一：分步通配符替换法 (GUI操作)"></a><strong>方法一：分步通配符替换法 (GUI操作)</strong></h3><p>此方法通过将一个复杂的替换操作分解为三个简单的步骤，巧妙地规避了Word的内部Bug，无需使用宏即可完成任务。该方法经本人和多个 AI 交流，并在 Word 2019 中测试迭代得到。</p>
+<h4 id="核心原理：规避Word-Bug"><a href="#核心原理：规避Word-Bug" class="headerlink" title="核心原理：规避Word Bug"></a><strong>核心原理：规避Word Bug</strong></h4><p>此方法的根本原因在于，Word的“查找和替换”功能在使用通配符时存在一个Bug：当“替换为”框中同时包含<strong>反向引用代码（如 <code>\1</code>）</strong>和<strong>特殊字符（如 <code>[</code> 或 <code>]</code>）</strong>时，替换引擎会发生冲突并导致操作失败。</p>
+<p>本方法通过使用临时的、不含特殊字符的文本占位符来完成替换，然后再将占位符替换为最终的目标字符，从而绕开此Bug。</p>
+<h4 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a><strong>操作步骤</strong></h4><p><strong>第1步：使用通配符和临时标记替换公式</strong></p>
 <ol>
-<li><p>在<code>YourBlogDir/.deploy_git/.git/config</code>下，设置Git不要忽略大小写。</p>
-<pre class="line-numbers language-none"><code class="language-none">[core]
-	....
-	ignorecase &#x3D; false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<li><p>按下 <code>Ctrl + H</code> 打开“查找和替换”对话框。</p>
 </li>
-<li><p>清空部署端，以Git为例：</p>
-<pre class="line-numbers language-none"><code class="language-none">cd .deploy_git
-git rm -rf *
-git commit -m &#39;clean all file&#39;
-git push<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<li><p>点击 <strong>“更多 &gt;&gt;”</strong> 并勾选 <strong>“使用通配符 (Use wildcards)”</strong>。</p>
 </li>
-<li><p>重新渲染并上传</p>
-<pre class="line-numbers language-none"><code class="language-none">hexo clean
-hexo g -d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><p>填写以下内容：</p>
+<ul>
+<li><p><strong>查找内容 (Find what):</strong> $$$(*)$$$</p>
+</li>
+<li><p>替换为 (Replace with): TEMP_OPEN\1TEMP_CLOSE</p>
+<p>(注：TEMP_OPEN 和 TEMP_CLOSE 是自定义的临时标记，可替换为任何您文档中不存在的独特字符串)</p>
+</li>
+</ul>
+</li>
+<li><p>点击 <strong>“全部替换 (Replace All)”</strong>。</p>
+</li>
 </ol>
-</blockquote>
+<p><strong>第2步：替换“开始标记”</strong></p>
+<ol>
+<li><strong>取消勾选</strong> “使用通配符 (Use wildcards)”。</li>
+<li>填写以下内容：<ul>
+<li><strong>查找内容 (Find what):</strong> <code>TEMP_OPEN</code></li>
+<li><strong>替换为 (Replace with):</strong> <code>\[</code>  <em>(注意<code>[</code>后<strong>可以</strong>有空格)</em></li>
+</ul>
+</li>
+<li>点击 <strong>“全部替换 (Replace All)”</strong>。</li>
+</ol>
+<p><strong>第3步：替换“结束标记”</strong></p>
+<ol>
+<li>继续保持“使用通配符”为<strong>未勾选</strong>状态。</li>
+<li>填写以下内容：<ul>
+<li><strong>查找内容 (Find what):</strong> <code>TEMP_CLOSE</code></li>
+<li><strong>替换为 (Replace with):</strong> <code>\]</code>  <em>(注意<code>]</code>前<strong>可以</strong>有空格)</em></li>
+</ul>
+</li>
+<li>点击 <strong>“全部替换 (Replace All)”</strong>。</li>
+</ol>
+<p>至此，全部替换操作完成。</p>
+<h3 id="方法二：使用VBA宏一键替换"><a href="#方法二：使用VBA宏一键替换" class="headerlink" title="方法二：使用VBA宏一键替换"></a><strong>方法二：使用VBA宏一键替换</strong></h3><p>此方法通过在 Word 中运行一段 VBA(Visual Basic for Applications) 代码，实现一键式的替换。它能完全绕过 GUI 界面的 Bug<del>，甚至可以处理 GUI 方法无法解决的跨段落公式问题【Gemini 的幻觉，验证发现实际可以处理跨段落内容】</del>。</p>
+<h4 id="VBA-代码"><a href="#VBA-代码" class="headerlink" title="VBA 代码"></a><strong>VBA 代码</strong></h4><pre class="line-numbers language-visual" data-language="visual"><div class="caption"><span>basic</span></div><code class="language-visual">Sub ReplaceTeXDisplayMathDelimiters()
+    &#39; 功能：将文档中所有的 $$...$$ TeX行间公式分隔符替换为 \[...\]
+    &#39; 版本：1.0
+    &#39; 优点：可靠，可跨段落，一键完成
+    
+    &#39; 关闭屏幕更新以提高速度
+    Application.ScreenUpdating &#x3D; False
+    
+    Dim searchRange As Range
+    Set searchRange &#x3D; ActiveDocument.Content
+    
+    &#39; 清理查找和替换的格式设置
+    searchRange.Find.ClearFormatting
+    searchRange.Find.Replacement.ClearFormatting
+    
+    With searchRange.Find
+        .Text &#x3D; &quot;$$*$$&quot; &#39; 注意：在VBA中查找模式略有不同
+        .Replacement.Text &#x3D; &quot;&quot;
+        .Forward &#x3D; True
+        .Wrap &#x3D; wdFindStop &#39; 在文档末尾停止
+        .Format &#x3D; False
+        .MatchCase &#x3D; False
+        .MatchWholeWord &#x3D; False
+        .MatchWildcards &#x3D; True &#39; 启用通配符
+        .MatchSoundsLike &#x3D; False
+        .MatchAllWordForms &#x3D; False
+        
+        Dim replacementText As String
+        
+        &#39; 循环执行查找
+        Do While .Execute
+            &#39; .Execute成功后，匹配到的内容就在 searchRange 对象中
+            
+            &#39; 提取公式内容（去掉前后的$$）
+            Dim content As String
+            content &#x3D; Mid(searchRange.Text, 3, Len(searchRange.Text) - 4)
+            
+            &#39; 构建新的替换文本
+            replacementText &#x3D; &quot;\[ &quot; &amp; content &amp; &quot; \]&quot;
+            
+            &#39; 用新文本替换掉原来的匹配范围
+            searchRange.Text &#x3D; replacementText
+            
+            &#39; 将搜索范围折叠到替换后的末尾，以继续向后查找
+            searchRange.Collapse wdCollapseEnd
+        Loop
+    End With
+    
+    &#39; 恢复屏幕更新
+    Application.ScreenUpdating &#x3D; True
+    
+    &#39; 给出完成提示
+    MsgBox &quot;全部分隔符替换完成。&quot;, vbInformation
+
+End Sub<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a><strong>使用说明</strong></h4><ol>
+<li>在Word中，按下键盘快捷键 <code>Alt + F11</code> 打开VBA编辑器。</li>
+<li>在左侧的工程项目浏览器中，找到您的文档名（通常是 <code>Project (YourDocumentName)</code>)。</li>
+<li>右键点击您的文档名，选择 <strong>插入 (Insert)</strong> -&gt; <strong>模块 (Module)</strong>。</li>
+<li>将上面的VBA代码 <strong>完整复制</strong> 并粘贴到右侧新出现的空白代码窗口中。</li>
+<li>点击工具栏中的 <strong>绿色三角“运行”按钮</strong> (或按 <code>F5</code> 键) 来执行宏。</li>
+<li>脚本运行后会弹出一个提示框告知操作完成。</li>
+<li>未来若要再次运行此宏，只需打开任意Word文档，按下 <code>Alt + F8</code>，在列表中选择 <code>ReplaceTeXDisplayMathDelimiters</code> 并点击“运行”即可。</li>
+</ol>
+<h4 id="重要风险与安全提示"><a href="#重要风险与安全提示" class="headerlink" title="重要风险与安全提示"></a><strong>重要风险与安全提示</strong></h4><ul>
+<li><strong>备份先行</strong>：在运行任何宏之前，建议<strong>首先备份原始文档</strong>。宏操作会直接修改文档内容，且可能无法通过“撤销”(Ctrl+Z)来回退。</li>
+<li><strong>未经测试</strong>：尽管此代码是为解决该特定问题而编写的，但仅为 AI 生成内容，尚未进行测试。</li>
+</ul>
 </div>
     </div>
 
     <div class="post-meta">
         <i>
         
-            <span>2025-07-13</span>
+            <span>2025-07-14</span>
             
                 <span>该篇文章被 GanMocai</span>
             
@@ -427,21 +518,30 @@ hexo g -d<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
                 <span>打上标签:
                     
                     
-                        <a href='/tags/%E5%8D%9A%E5%AE%A2/'>
-                            博客
+                        <a href='/tags/LaTeX/'>
+                            LaTeX
                         </a>
                     
-                        <a href='/tags/Git/'>
-                            Git
+                        <a href='/tags/Word/'>
+                            Word
                         </a>
                     
-                        <a href='/tags/Windows/'>
-                            Windows
+                        <a href='/tags/MathType/'>
+                            MathType
                         </a>
                     
                 </span>
              
              
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E5%AD%98%E6%A1%A3/'>
+                            存档
+                        </a>
+                    
+                </span>
+            
         
         </i>
     </div>
@@ -453,11 +553,9 @@ hexo g -d<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
     
             <div class="post-footer-pre-next">
                 
-                    <span>上一篇：<a href='/2025/07/14/LaTeX%20%E8%BF%81%E7%A7%BB%20Word%EF%BC%9A%E5%85%AC%E5%BC%8F/'>LaTeX 迁移 Word：公式</a></span>
-                
 
                 
-                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/06/07/%E6%96%87%E4%BB%B6%E4%B8%8EURL%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83%EF%BC%9A%E5%88%86%E9%9A%94%E7%AC%A6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">文件与URL命名规范：分隔符使用指南</a>
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/07/13/Git%20%E5%9C%A8%20Windows%20%E4%B8%8A%E5%A4%A7%E5%B0%8F%E5%86%99%E4%B8%8D%E6%95%8F%E6%84%9F/">Git 在 Windows 上大小写不敏感</a>
                     </span>
                 
             </div>
