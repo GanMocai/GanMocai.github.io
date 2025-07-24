@@ -14,7 +14,7 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
     <meta name="description" content="Git 在 Windows 上大小写不敏感" />
     <meta name="hexo-theme-A4" content="v1.9.7" />
-    <link rel="alternate icon" type="image/webp" href="/img/favicon.png">
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.ico">
     <title>GanMocai&#39;s Blog | GanMocai的个人博客</title>
 
     
@@ -69,7 +69,119 @@
 
     
 
-<meta name="generator" content="Hexo 6.2.0"></head>
+<meta name="generator" content="Hexo 6.2.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
     
     
         <style>
@@ -310,7 +422,7 @@
             alt="^-^" 
             cache-control="max-age=86400" 
             class="header-img" 
-            src="/img/favicon.png" 
+            src="/img/favicon.ico" 
         />
         <div class="header-content">
             <a class="logo" href="/">GanMocai&#39;s Blog</a> 
@@ -374,7 +486,7 @@
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：247</span>
+                     <span>字数总计：244</span>
                 
                 
                     
@@ -395,10 +507,6 @@
 
     <div class="post-md">
         
-            
-                
-            
-        
         <div class=".article-gallery"><p>之前重新整理过博客文章，包括对一些文件名或者标签的更改，如首字母改为大写。当时就发现某些文章无法访问，但是在本地部署时可以正常访问。</p>
 <p>今天想起来解决，重新生成部署无效。查看了 GitHub 仓库中的文件后发现无法正常显示的网页的上级目录首字母依旧是小写的，基本确定无法正常访问的原因是大小写不对。</p>
 <p>于是找到解决方法：<a target="_blank" rel="noopener" href="https://www.windsings.com/post/e36fe130/">解决由于大小写敏感导致的Hexo页面404问题 | 且听风吟</a></p>
@@ -408,12 +516,12 @@
 <li><p>在<code>YourBlogDir/.deploy_git/.git/config</code>下，设置Git不要忽略大小写。</p>
 <pre class="line-numbers language-none"><code class="language-none">[core]
 	....
-	ignorecase &#x3D; false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+	ignorecase = false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>清空部署端，以Git为例：</p>
 <pre class="line-numbers language-none"><code class="language-none">cd .deploy_git
 git rm -rf *
-git commit -m &#39;clean all file&#39;
+git commit -m 'clean all file'
 git push<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>重新渲染并上传</p>

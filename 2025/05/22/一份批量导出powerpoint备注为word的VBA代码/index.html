@@ -14,7 +14,7 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
     <meta name="description" content="一份批量导出powerpoint备注为word的VBA代码" />
     <meta name="hexo-theme-A4" content="v1.9.7" />
-    <link rel="alternate icon" type="image/webp" href="/img/favicon.png">
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.ico">
     <title>GanMocai&#39;s Blog | GanMocai的个人博客</title>
 
     
@@ -69,7 +69,119 @@
 
     
 
-<meta name="generator" content="Hexo 6.2.0"></head>
+<meta name="generator" content="Hexo 6.2.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
     
     
         <style>
@@ -310,7 +422,7 @@
             alt="^-^" 
             cache-control="max-age=86400" 
             class="header-img" 
-            src="/img/favicon.png" 
+            src="/img/favicon.ico" 
         />
         <div class="header-content">
             <a class="logo" href="/">GanMocai&#39;s Blog</a> 
@@ -374,7 +486,7 @@
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：1.1k</span>
+                     <span>字数总计：1k</span>
                 
                 
                     
@@ -395,10 +507,6 @@
 
     <div class="post-md">
         
-            
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#PowerPoint-%E5%A4%87%E6%B3%A8%E5%AF%BC%E5%87%BA-%E7%9A%84-VBA-%E8%84%9A%E6%9C%AC"><span class="post-toc-text">PowerPoint 备注导出 的 VBA 脚本</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8A%9F%E8%83%BD"><span class="post-toc-text">功能</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="post-toc-text">代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4"><span class="post-toc-text">使用步骤</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="post-toc-text">注意事项</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BC%AA%E4%BB%A3%E7%A0%81"><span class="post-toc-text">伪代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="post-toc-text">输出格式</span></a></li></ol></li></ol>
-            
-        
         <div class=".article-gallery"><h1 id="PowerPoint-备注导出-的-VBA-脚本"><a href="#PowerPoint-备注导出-的-VBA-脚本" class="headerlink" title="PowerPoint 备注导出 的 VBA 脚本"></a>PowerPoint 备注导出 的 VBA 脚本</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>此 VBA 脚本（<code>ExportNotesToWord.vba</code>）用于从 Microsoft PowerPoint 演示文稿中批量提取幻灯片备注，并将其整理为格式化的 Microsoft Word 文档。每个备注前会标注对应的幻灯片编号，排版清晰，适合需要汇总和整理 PPT 备注的场景。</p>
 <h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ul>
 <li>提取所有幻灯片的备注内容。</li>
@@ -414,56 +522,56 @@
     Dim wdDoc As Object
     Dim i As Integer
     
-    &#39; 打开当前演示文稿
-    Set pptApp &#x3D; Application
-    Set pres &#x3D; pptApp.ActivePresentation
+    ' 打开当前演示文稿
+    Set pptApp = Application
+    Set pres = pptApp.ActivePresentation
     
-    &#39; 创建 Word 应用程序
+    ' 创建 Word 应用程序
     On Error Resume Next
-    Set wdApp &#x3D; GetObject(, &quot;Word.Application&quot;)
+    Set wdApp = GetObject(, "Word.Application")
     If wdApp Is Nothing Then
-        Set wdApp &#x3D; CreateObject(&quot;Word.Application&quot;)
+        Set wdApp = CreateObject("Word.Application")
     End If
-    wdApp.Visible &#x3D; True
-    Set wdDoc &#x3D; wdApp.Documents.Add
+    wdApp.Visible = True
+    Set wdDoc = wdApp.Documents.Add
     
-    &#39; 设置 Word 文档标题
+    ' 设置 Word 文档标题
     wdDoc.Paragraphs.Add
-    wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Size &#x3D; 16
-    wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Bold &#x3D; True
-    wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Text &#x3D; &quot;PowerPoint 备注导出&quot; &amp; vbCrLf
+    wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Size = 16
+    wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Bold = True
+    wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Text = "PowerPoint 备注导出" &amp; vbCrLf
     
-    &#39; 遍历每页幻灯片
+    ' 遍历每页幻灯片
     For Each sld In pres.Slides
-        i &#x3D; sld.SlideIndex
+        i = sld.SlideIndex
         If Len(sld.NotesPage.Shapes.Placeholders(2).TextFrame.TextRange.Text) &gt; 0 Then
-            &#39; 添加幻灯片编号
+            ' 添加幻灯片编号
             wdDoc.Paragraphs.Add
-            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Size &#x3D; 12
-            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Bold &#x3D; True
-            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Text &#x3D; &quot;幻灯片 &quot; &amp; i &amp; &quot;:&quot; &amp; vbCrLf
+            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Size = 12
+            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Bold = True
+            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Text = "幻灯片 " &amp; i &amp; ":" &amp; vbCrLf
             
-            &#39; 添加备注内容
+            ' 添加备注内容
             wdDoc.Paragraphs.Add
-            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Size &#x3D; 10
-            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Bold &#x3D; False
-            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Text &#x3D; sld.NotesPage.Shapes.Placeholders(2).TextFrame.TextRange.Text &amp; vbCrLf
+            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Size = 10
+            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Bold = False
+            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Text = sld.NotesPage.Shapes.Placeholders(2).TextFrame.TextRange.Text &amp; vbCrLf
             
         End If
     Next sld
     
-    &#39; 保存 Word 文档
-    wdDoc.SaveAs (pres.Path &amp; &quot;\PPT_Notes.docx&quot;)
+    ' 保存 Word 文档
+    wdDoc.SaveAs (pres.Path &amp; "\PPT_Notes.docx")
     wdDoc.Close
     wdApp.Quit
     
-    &#39; 清理对象
-    Set wdDoc &#x3D; Nothing
-    Set wdApp &#x3D; Nothing
-    Set pres &#x3D; Nothing
-    Set pptApp &#x3D; Nothing
+    ' 清理对象
+    Set wdDoc = Nothing
+    Set wdApp = Nothing
+    Set pres = Nothing
+    Set pptApp = Nothing
     
-    MsgBox &quot;备注已成功导出到 &quot; &amp; pres.Path &amp; &quot;\PPT_Notes.docx&quot;
+    MsgBox "备注已成功导出到 " &amp; pres.Path &amp; "\PPT_Notes.docx"
 End Sub<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><ol>
 <li><p>打开 PowerPoint</p>
@@ -513,16 +621,16 @@ End Sub<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
 <h2 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h2><p>以下是脚本的核心逻辑，精简为伪代码形式：</p>
 <pre class="line-numbers language-none"><code class="language-none">初始化 PowerPoint 应用程序和当前演示文稿
 创建新的 Word 文档
-在 Word 文档中添加标题 &quot;PowerPoint 备注导出&quot;
+在 Word 文档中添加标题 "PowerPoint 备注导出"
 
 对于每页幻灯片：
     获取幻灯片编号
     如果幻灯片有备注：
-        在 Word 文档中添加标题 &quot;幻灯片 X:&quot;
+        在 Word 文档中添加标题 "幻灯片 X:"
         设置标题和内容的字体样式（大小、加粗等）
         添加备注内容
 
-将 Word 文档保存为 &quot;PPT_Notes.docx&quot;（位于 PPT 文件目录）
+将 Word 文档保存为 "PPT_Notes.docx"（位于 PPT 文件目录）
 关闭 Word 文档和应用程序
 显示完成提示
 清理对象<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
