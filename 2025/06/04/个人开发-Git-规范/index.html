@@ -68,8 +68,8 @@
 <link rel="stylesheet" href="/css/custom.css">
 
     
-
-<meta name="generator" content="Hexo 6.2.0"><style>mjx-container[jax="SVG"] {
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css' /> 
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -370,7 +370,8 @@ mjx-container[display="true"] + br {
     </style>
 
     
-    
+
+
     <body>
         <script src="/js/darkmode-js.min.js"></script>
         
@@ -393,14 +394,16 @@ mjx-container[display="true"] + br {
         </script>
         
         
-            <div class="left-toc-container">
-                <nav id="toc" class="bs-docs-sidebar"></nav>
-            </div>
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
         
         <div class="paper">
+
             
-            
-            
+
             
                 <div class="shadow-drop-2-bottom paper-main">
                     
@@ -450,14 +453,14 @@ mjx-container[display="true"] + br {
             
         
     </ul>
-</div> 
-        
+</div>
+
                     
                     
 
                     
                     
-                    
+
                     <!--说明是文章post页面-->
                     
                         <div class="post-main">
@@ -530,34 +533,18 @@ mjx-container[display="true"] + br {
 </ul>
 <p><strong>开发流程示例：</strong></p>
 <ol>
-<li>确保 <code>develop</code> 分支是最新代码：<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> checkout develop
-<span class="token function">git</span> pull origin develop<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-<li>创建一个新的特性分支开始工作：<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> checkout <span class="token parameter variable">-b</span> feat/new-cool-feature develop<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>确保 <code>develop</code> 分支是最新代码：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git checkout develop<br>git pull origin develop<br></code></pre></td></tr></table></figure></li>
+<li>创建一个新的特性分支开始工作：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git checkout -b feat/new-cool-feature develop<br></code></pre></td></tr></table></figure></li>
 <li>在 <code>feat/new-cool-feature</code> 分支上进行编码和提交。</li>
-<li>当功能开发完成并通过测试后，切换回 <code>develop</code> 分支：<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> checkout develop<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>将特性分支合并到 <code>develop</code> 分支：<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> merge --no-ff feat/new-cool-feature<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<li>当功能开发完成并通过测试后，切换回 <code>develop</code> 分支：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git checkout develop<br></code></pre></td></tr></table></figure></li>
+<li>将特性分支合并到 <code>develop</code> 分支：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git merge --no-ff feat/new-cool-feature<br></code></pre></td></tr></table></figure>
 <em>(<code>--no-ff</code> 的意思是 “no fast-forward”，这样可以保留特性分支的提交历史，使得分支图更清晰。)</em></li>
-<li>删除特性分支（可选，但推荐）：<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> branch <span class="token parameter variable">-d</span> feat/new-cool-feature<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>当 <code>develop</code> 分支上的功能积累到一定程度，并且测试稳定后，可以将其合并到 <code>main</code> 分支，并打上版本标签。<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> checkout main
-<span class="token function">git</span> pull origin main
-<span class="token function">git</span> merge develop
-<span class="token function">git</span> push origin main
-<span class="token function">git</span> tag <span class="token parameter variable">-a</span> v0.1.0 <span class="token parameter variable">-m</span> <span class="token string">"Version 0.1.0 Release"</span> <span class="token comment"># 创建一个带附注的标签</span>
-<span class="token function">git</span> push origin v0.1.0 <span class="token comment"># 推送标签</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
+<li>删除特性分支（可选，但推荐）：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git branch -d feat/new-cool-feature<br></code></pre></td></tr></table></figure></li>
+<li>当 <code>develop</code> 分支上的功能积累到一定程度，并且测试稳定后，可以将其合并到 <code>main</code> 分支，并打上版本标签。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">git checkout main<br>git pull origin main<br>git merge develop<br>git push origin main<br>git tag -a v0.1.0 -m <span class="hljs-string">"Version 0.1.0 Release"</span> <span class="hljs-comment"># 创建一个带附注的标签</span><br>git push origin v0.1.0 <span class="hljs-comment"># 推送标签</span><br></code></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="三、Commit-Message-规范-✍️"><a href="#三、Commit-Message-规范-✍️" class="headerlink" title="三、Commit Message 规范 ✍️"></a>三、Commit Message 规范 ✍️</h2><p>这是帮助你追溯代码的关键！一个好的 Commit Message 应该清晰地说明 <strong>做了什么</strong> 以及 <strong>为什么这么做</strong>。我们推荐类似 <a target="_blank" rel="noopener" href="https://www.conventionalcommits.org/">Conventional Commits</a> 的规范，但可以简化。</p>
-<p><strong>Commit Message 结构:</strong><br><pre class="line-numbers language-none"><code class="language-none">
-&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;
-
-&lt;BLANK LINE&gt;
-
-&lt;body&gt;
-
-&lt;BLANK LINE&gt;
-
-&lt;footer&gt;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
+<p><strong>Commit Message 结构:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>&amp;lt;type&gt;(&amp;lt;scope&gt;): &amp;lt;subject&gt;<br><br>&amp;lt;BLANK LINE&gt;<br><br>&amp;lt;body&gt;<br><br>&amp;lt;BLANK LINE&gt;<br><br>&amp;lt;footer&gt;<br><br></code></pre></td></tr></table></figure>
 <ul>
 <li><strong><code>&lt;type&gt;</code> (必需)</strong>：说明提交的类别。常用的有：<ul>
 <li><code>feat</code>: 新功能 (feature)</li>
@@ -592,31 +579,15 @@ mjx-container[display="true"] + br {
 </li>
 </ul>
 <p><strong>Commit Message 示例：</strong></p>
-<p>一个简单的 commit:<br><pre class="line-numbers language-none"><code class="language-none">
-feat: add user registration functionality
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><br>包含 scope:<br><pre class="line-numbers language-none"><code class="language-none">
-feat(auth): implement JWT-based authentication
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><br>包含 body:<br><pre class="line-numbers language-none"><code class="language-none">
-fix: correct incorrect tax calculation
-
-The previous calculation was not rounding correctly for amounts
-
-under $10, leading to minor discrepancies in final totals.
-
-This commit updates the rounding logic to ensure accuracy.
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>包含 breaking change 和关闭 issue:<br><pre class="line-numbers language-none"><code class="language-none">
-feat: update user API to v2
-
-BREAKING CHANGE: The user API endpoint /api/user has been
-
-renamed to /api/v2/user to accommodate new features and
-
-improve consistency. All client applications need to update
-
-their API calls.
-
-Closes #42
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br><strong>为什么要这样写？</strong></p>
+<p>一个简单的 commit:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>feat: add user registration functionality<br><br></code></pre></td></tr></table></figure>
+<p>包含 scope:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>feat(auth): implement JWT-based authentication<br><br></code></pre></td></tr></table></figure>
+<p>包含 body:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>fix: correct incorrect tax calculation<br><br>The previous calculation was not rounding correctly for amounts<br><br>under $10, leading to minor discrepancies in final totals.<br><br>This commit updates the rounding logic to ensure accuracy.<br><br></code></pre></td></tr></table></figure>
+<p>包含 breaking change 和关闭 issue:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"><br>feat: update user API to v2<br><br>BREAKING CHANGE: The user API endpoint /api/user has been<br><br>renamed to /api/v2/user to accommodate new features and<br><br>improve consistency. All client applications need to update<br><br>their API calls.<br><br>Closes #42<br><br></code></pre></td></tr></table></figure>
+<p><strong>为什么要这样写？</strong></p>
 <ul>
 <li><strong>可读性强</strong>：一眼就能看出每次提交的目的。</li>
 <li><strong>易于追溯</strong>：方便查找特定功能的修改历史或 bug 的修复过程。</li>
@@ -627,8 +598,7 @@ Closes #42
 <li><strong>经常 <code>git pull</code></strong>：如果你在多个地方开发同一个项目（例如公司电脑和家里电脑），或者未来可能与他人协作，养成在开始工作前 <code>git pull</code> 的习惯，以获取最新代码，避免冲突。</li>
 <li><strong>谨慎使用 <code>git push --force</code></strong>：这个命令会覆盖远程仓库的历史，除非你非常清楚自己在做什么，否则尽量避免使用。尤其是在与他人协作时，这通常是被禁止的。</li>
 <li><strong>学习使用 <code>git rebase -i</code> (交互式变基)</strong>：当你本地有一系列零散的提交时，可以使用交互式变基来清理提交历史，例如合并多个小的提交，修改 commit message 等。这能让你的提交历史更整洁。但在推送到共享分支后，不建议对已推送的提交进行变基。</li>
-<li><strong>配置 Git 用户名和邮箱</strong>：<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config <span class="token parameter variable">--global</span> user.name <span class="token string">"Your Name"</span>
-<span class="token function">git</span> config <span class="token parameter variable">--global</span> user.email <span class="token string">"your.email@example.com"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><strong>配置 Git 用户名和邮箱</strong>：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global user.name <span class="hljs-string">"Your Name"</span><br>git config --global user.email <span class="hljs-string">"your.email@example.com"</span><br></code></pre></td></tr></table></figure></li>
 <li><strong>善用 <code>git status</code>, <code>git diff</code>, <code>git log</code></strong>：这三个命令是你了解仓库状态、查看修改内容、回顾提交历史的好帮手。</li>
 </ul>
 </div>
@@ -704,9 +674,9 @@ Closes #42
 
 
 
-                                      
+
                     
-                    
+
                     <div class="footer">
     
         <span> 
@@ -819,7 +789,7 @@ Closes #42
                 </div>
             
             
-                <!-- 回到顶部的按钮-->  
+                <!-- 回到顶部的按钮-->
                 <div class="progress-wrap shadow-drop-2-bottom">
                     <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
                         <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
@@ -829,3 +799,9 @@ Closes #42
             
     </body>
 </html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        wrapEmojis('.paper');
+    });
+</script>

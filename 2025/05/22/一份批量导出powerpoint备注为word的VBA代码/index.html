@@ -68,8 +68,8 @@
 <link rel="stylesheet" href="/css/custom.css">
 
     
-
-<meta name="generator" content="Hexo 6.2.0"><style>mjx-container[jax="SVG"] {
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css' /> 
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -370,7 +370,8 @@ mjx-container[display="true"] + br {
     </style>
 
     
-    
+
+
     <body>
         <script src="/js/darkmode-js.min.js"></script>
         
@@ -393,14 +394,16 @@ mjx-container[display="true"] + br {
         </script>
         
         
-            <div class="left-toc-container">
-                <nav id="toc" class="bs-docs-sidebar"></nav>
-            </div>
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
         
         <div class="paper">
+
             
-            
-            
+
             
                 <div class="shadow-drop-2-bottom paper-main">
                     
@@ -450,14 +453,14 @@ mjx-container[display="true"] + br {
             
         
     </ul>
-</div> 
-        
+</div>
+
                     
                     
 
                     
                     
-                    
+
                     <!--说明是文章post页面-->
                     
                         <div class="post-main">
@@ -514,65 +517,10 @@ mjx-container[display="true"] + br {
 <li>自动将输出保存为 Word 文档（<code>PPT_Notes.docx</code>），位于 PPT 文件同一目录。</li>
 <li>不会修改原始 PPT 文件，仅执行只读操作。</li>
 </ul>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class="line-numbers language-visual" data-language="visual"><div class="caption"><span>basic</span></div><code class="language-visual">Sub ExportNotesToWord()
-    Dim pptApp As PowerPoint.Application
-    Dim pres As PowerPoint.Presentation
-    Dim sld As PowerPoint.Slide
-    Dim wdApp As Object
-    Dim wdDoc As Object
-    Dim i As Integer
-    
-    ' 打开当前演示文稿
-    Set pptApp = Application
-    Set pres = pptApp.ActivePresentation
-    
-    ' 创建 Word 应用程序
-    On Error Resume Next
-    Set wdApp = GetObject(, "Word.Application")
-    If wdApp Is Nothing Then
-        Set wdApp = CreateObject("Word.Application")
-    End If
-    wdApp.Visible = True
-    Set wdDoc = wdApp.Documents.Add
-    
-    ' 设置 Word 文档标题
-    wdDoc.Paragraphs.Add
-    wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Size = 16
-    wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Bold = True
-    wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Text = "PowerPoint 备注导出" &amp; vbCrLf
-    
-    ' 遍历每页幻灯片
-    For Each sld In pres.Slides
-        i = sld.SlideIndex
-        If Len(sld.NotesPage.Shapes.Placeholders(2).TextFrame.TextRange.Text) &gt; 0 Then
-            ' 添加幻灯片编号
-            wdDoc.Paragraphs.Add
-            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Size = 12
-            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Bold = True
-            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Text = "幻灯片 " &amp; i &amp; ":" &amp; vbCrLf
-            
-            ' 添加备注内容
-            wdDoc.Paragraphs.Add
-            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Size = 10
-            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Bold = False
-            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Text = sld.NotesPage.Shapes.Placeholders(2).TextFrame.TextRange.Text &amp; vbCrLf
-            
-        End If
-    Next sld
-    
-    ' 保存 Word 文档
-    wdDoc.SaveAs (pres.Path &amp; "\PPT_Notes.docx")
-    wdDoc.Close
-    wdApp.Quit
-    
-    ' 清理对象
-    Set wdDoc = Nothing
-    Set wdApp = Nothing
-    Set pres = Nothing
-    Set pptApp = Nothing
-    
-    MsgBox "备注已成功导出到 " &amp; pres.Path &amp; "\PPT_Notes.docx"
-End Sub<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs visual">Sub ExportNotesToWord()<br>    Dim pptApp As PowerPoint.Application<br>    Dim pres As PowerPoint.Presentation<br>    Dim sld As PowerPoint.Slide<br>    Dim wdApp As Object<br>    Dim wdDoc As Object<br>    Dim i As Integer<br>    <br>    ' 打开当前演示文稿<br>    Set pptApp = Application<br>    Set pres = pptApp.ActivePresentation<br>    <br>    ' 创建 Word 应用程序<br>    On Error Resume Next<br>    Set wdApp = GetObject(, "Word.Application")<br>    If wdApp Is Nothing Then<br>        Set wdApp = CreateObject("Word.Application")<br>    End If<br>    wdApp.Visible = True<br>    Set wdDoc = wdApp.Documents.Add<br>    <br>    ' 设置 Word 文档标题<br>    wdDoc.Paragraphs.Add<br>    wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Size = 16<br>    wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Bold = True<br>    wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Text = "PowerPoint 备注导出" &amp; vbCrLf<br>    <br>    ' 遍历每页幻灯片<br>    For Each sld In pres.Slides<br>        i = sld.SlideIndex<br>        If Len(sld.NotesPage.Shapes.Placeholders(2).TextFrame.TextRange.Text) &gt; 0 Then<br>            ' 添加幻灯片编号<br>            wdDoc.Paragraphs.Add<br>            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Size = 12<br>            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Bold = True<br>            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Text = "幻灯片 " &amp; i &amp; ":" &amp; vbCrLf<br>            <br>            ' 添加备注内容<br>            wdDoc.Paragraphs.Add<br>            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Size = 10<br>            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Font.Bold = False<br>            wdDoc.Paragraphs(wdDoc.Paragraphs.Count).Range.Text = sld.NotesPage.Shapes.Placeholders(2).TextFrame.TextRange.Text &amp; vbCrLf<br>            <br>        End If<br>    Next sld<br>    <br>    ' 保存 Word 文档<br>    wdDoc.SaveAs (pres.Path &amp; "\PPT_Notes.docx")<br>    wdDoc.Close<br>    wdApp.Quit<br>    <br>    ' 清理对象<br>    Set wdDoc = Nothing<br>    Set wdApp = Nothing<br>    Set pres = Nothing<br>    Set pptApp = Nothing<br>    <br>    MsgBox "备注已成功导出到 " &amp; pres.Path &amp; "\PPT_Notes.docx"<br>End Sub<br></code></pre></td></tr></table></figure>
+
+
+
 <h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><ol>
 <li><p>打开 PowerPoint</p>
 <p> ：</p>
@@ -619,21 +567,8 @@ End Sub<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
 <li><strong>测试环境</strong>：建议先用小型 PPT 文件测试脚本，确保输出符合预期。</li>
 </ul>
 <h2 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h2><p>以下是脚本的核心逻辑，精简为伪代码形式：</p>
-<pre class="line-numbers language-none"><code class="language-none">初始化 PowerPoint 应用程序和当前演示文稿
-创建新的 Word 文档
-在 Word 文档中添加标题 "PowerPoint 备注导出"
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">初始化 PowerPoint 应用程序和当前演示文稿<br>创建新的 Word 文档<br>在 Word 文档中添加标题 "PowerPoint 备注导出"<br><br>对于每页幻灯片：<br>    获取幻灯片编号<br>    如果幻灯片有备注：<br>        在 Word 文档中添加标题 "幻灯片 X:"<br>        设置标题和内容的字体样式（大小、加粗等）<br>        添加备注内容<br><br>将 Word 文档保存为 "PPT_Notes.docx"（位于 PPT 文件目录）<br>关闭 Word 文档和应用程序<br>显示完成提示<br>清理对象<br></code></pre></td></tr></table></figure>
 
-对于每页幻灯片：
-    获取幻灯片编号
-    如果幻灯片有备注：
-        在 Word 文档中添加标题 "幻灯片 X:"
-        设置标题和内容的字体样式（大小、加粗等）
-        添加备注内容
-
-将 Word 文档保存为 "PPT_Notes.docx"（位于 PPT 文件目录）
-关闭 Word 文档和应用程序
-显示完成提示
-清理对象<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><ul>
 <li><p><strong>文件</strong>：<code>PPT_Notes.docx</code></p>
 </li>
@@ -707,9 +642,9 @@ End Sub<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
 
 
 
-                                      
+
                     
-                    
+
                     <div class="footer">
     
         <span> 
@@ -822,7 +757,7 @@ End Sub<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
                 </div>
             
             
-                <!-- 回到顶部的按钮-->  
+                <!-- 回到顶部的按钮-->
                 <div class="progress-wrap shadow-drop-2-bottom">
                     <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
                         <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
@@ -832,3 +767,9 @@ End Sub<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
             
     </body>
 </html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        wrapEmojis('.paper');
+    });
+</script>

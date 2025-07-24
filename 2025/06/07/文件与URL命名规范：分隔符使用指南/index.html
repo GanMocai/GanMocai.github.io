@@ -68,8 +68,8 @@
 <link rel="stylesheet" href="/css/custom.css">
 
     
-
-<meta name="generator" content="Hexo 6.2.0"><style>mjx-container[jax="SVG"] {
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css' /> 
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -370,7 +370,8 @@ mjx-container[display="true"] + br {
     </style>
 
     
-    
+
+
     <body>
         <script src="/js/darkmode-js.min.js"></script>
         
@@ -393,14 +394,16 @@ mjx-container[display="true"] + br {
         </script>
         
         
-            <div class="left-toc-container">
-                <nav id="toc" class="bs-docs-sidebar"></nav>
-            </div>
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
         
         <div class="paper">
+
             
-            
-            
+
             
                 <div class="shadow-drop-2-bottom paper-main">
                     
@@ -450,14 +453,14 @@ mjx-container[display="true"] + br {
             
         
     </ul>
-</div> 
-        
+</div>
+
                     
                     
 
                     
                     
-                    
+
                     <!--说明是文章post页面-->
                     
                         <div class="post-main">
@@ -511,39 +514,35 @@ mjx-container[display="true"] + br {
 <p>本文档旨在提供一套关于分隔符（主要是下划线 <code>_</code> 与连字符 <code>-</code>）使用的完整指南，并重点介绍一套适用于文件和文件夹命名的双层分隔符系统。</p>
 <hr>
 <h2 id="Part-1：通用分隔符泛用性对比-vs"><a href="#Part-1：通用分隔符泛用性对比-vs" class="headerlink" title="Part 1：通用分隔符泛用性对比 (_ vs. -)"></a>Part 1：通用分隔符泛用性对比 (<code>_</code> vs. <code>-</code>)</h2><p>下划线 (<code>_</code>) 和连字符 (<code>-</code>) 是最常用的两种分隔符，但它们的“泛用性”完全取决于应用场景。简单来说，连字符更适合面向公众和网络，而下划线更适合技术性、内部使用的场景。</p>
-<h3 id="各场景推荐与原因"><a href="#各场景推荐与原因" class="headerlink" title="各场景推荐与原因"></a>各场景推荐与原因</h3><div class="table-container">
-<table>
+<h3 id="各场景推荐与原因"><a href="#各场景推荐与原因" class="headerlink" title="各场景推荐与原因"></a>各场景推荐与原因</h3><table>
 <thead>
 <tr>
-<th style="text-align:left">场景 (Use Case)</th>
-<th style="text-align:left">推荐分隔符</th>
-<th style="text-align:left">主要原因</th>
+<th align="left">场景 (Use Case)</th>
+<th align="left">推荐分隔符</th>
+<th align="left">主要原因</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left">URL 网址</td>
-<td style="text-align:left"><code>-</code> (连字符)</td>
-<td style="text-align:left">SEO 友好。Google 等搜索引擎将连字符视为单词分隔符（如 <code>my-page</code> 被理解为 <code>my page</code>），而下划线被视为单词连接符（<code>my_page</code> 被理解为 <code>mypage</code>），前者对搜索排名更有利。</td>
+<tbody><tr>
+<td align="left">URL 网址</td>
+<td align="left"><code>-</code> (连字符)</td>
+<td align="left">SEO 友好。Google 等搜索引擎将连字符视为单词分隔符（如 <code>my-page</code> 被理解为 <code>my page</code>），而下划线被视为单词连接符（<code>my_page</code> 被理解为 <code>mypage</code>），前者对搜索排名更有利。</td>
 </tr>
 <tr>
-<td style="text-align:left">文件名 (Filename)</td>
-<td style="text-align:left"><code>_</code> (下划线)</td>
-<td style="text-align:left">易用性与兼容性。在图形界面或命令行中，双击带下划线的文件名（<code>file_name.txt</code>）通常能选中整个名称，而带连字符的（<code>file-name.txt</code>）可能只选中一部分。</td>
+<td align="left">文件名 (Filename)</td>
+<td align="left"><code>_</code> (下划线)</td>
+<td align="left">易用性与兼容性。在图形界面或命令行中，双击带下划线的文件名（<code>file_name.txt</code>）通常能选中整个名称，而带连字符的（<code>file-name.txt</code>）可能只选中一部分。</td>
 </tr>
 <tr>
-<td style="text-align:left">编程 (Programming)</td>
-<td style="text-align:left">取决于语言规范</td>
-<td style="text-align:left">- Python: 强制推荐下划线 <code>snake_case</code> (e.g., <code>my_variable</code>)。<br>- CSS: 普遍使用连字符 <code>kebab-case</code> (e.g., <code>.my-class</code>)。<br>- JavaScript/Java: 多用 <code>camelCase</code>，不直接使用分隔符。</td>
+<td align="left">编程 (Programming)</td>
+<td align="left">取决于语言规范</td>
+<td align="left">- Python: 强制推荐下划线 <code>snake_case</code> (e.g., <code>my_variable</code>)。<br>- CSS: 普遍使用连字符 <code>kebab-case</code> (e.g., <code>.my-class</code>)。<br>- JavaScript/Java: 多用 <code>camelCase</code>，不直接使用分隔符。</td>
 </tr>
 <tr>
-<td style="text-align:left">数据库 (Database)</td>
-<td style="text-align:left"><code>_</code> (下划线)</td>
-<td style="text-align:left">可读性与安全性。<code>snake_case</code> 是绝大多数数据库设计的标准实践。连字符在某些 SQL 环境中可能被视为非法字符或需要特殊处理，容易出错。</td>
+<td align="left">数据库 (Database)</td>
+<td align="left"><code>_</code> (下划线)</td>
+<td align="left">可读性与安全性。<code>snake_case</code> 是绝大多数数据库设计的标准实践。连字符在某些 SQL 环境中可能被视为非法字符或需要特殊处理，容易出错。</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <hr>
 <h2 id="Part-2：最佳实践：双层分隔符文件命名系统"><a href="#Part-2：最佳实践：双层分隔符文件命名系统" class="headerlink" title="Part 2：最佳实践：双层分隔符文件命名系统"></a>Part 2：最佳实践：双层分隔符文件命名系统</h2><p>对于需要结构化管理的文件和文件夹，我们推荐使用一套分级、双层的分隔符系统。这套系统能最大化提升文件命名的清晰度和机器可读性。</p>
 <h3 id="核心原则"><a href="#核心原则" class="headerlink" title="核心原则"></a>核心原则</h3><ol>
@@ -563,7 +562,8 @@ mjx-container[display="true"] + br {
 <h3 id="标准命名模板与示例"><a href="#标准命名模板与示例" class="headerlink" title="标准命名模板与示例"></a>标准命名模板与示例</h3><p>一个健壮且通用的文件名模板如下：</p>
 <p>模板: <code>[日期]_[项目或类别]_[文件描述]_[版本号].[后缀]</code></p>
 <p>实际应用示例:</p>
-<pre class="line-numbers language-none"><code class="language-none">20250606_project-phoenix_marketing-launch-plan_v1.2.docx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">20250606_project-phoenix_marketing-launch-plan_v1.2.docx<br></code></pre></td></tr></table></figure>
+
 <p>文件名结构解析:</p>
 <ul>
 <li><code>20250606</code>: 日期区块。使用 <code>YYYYMMDD</code> 格式确保文件能按时间正确排序。</li>
@@ -650,9 +650,9 @@ mjx-container[display="true"] + br {
 
 
 
-                                      
+
                     
-                    
+
                     <div class="footer">
     
         <span> 
@@ -765,7 +765,7 @@ mjx-container[display="true"] + br {
                 </div>
             
             
-                <!-- 回到顶部的按钮-->  
+                <!-- 回到顶部的按钮-->
                 <div class="progress-wrap shadow-drop-2-bottom">
                     <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
                         <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
@@ -775,3 +775,9 @@ mjx-container[display="true"] + br {
             
     </body>
 </html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        wrapEmojis('.paper');
+    });
+</script>

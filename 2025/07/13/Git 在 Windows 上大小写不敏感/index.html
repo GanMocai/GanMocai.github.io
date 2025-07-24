@@ -68,8 +68,8 @@
 <link rel="stylesheet" href="/css/custom.css">
 
     
-
-<meta name="generator" content="Hexo 6.2.0"><style>mjx-container[jax="SVG"] {
+    <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css' /> 
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -370,7 +370,8 @@ mjx-container[display="true"] + br {
     </style>
 
     
-    
+
+
     <body>
         <script src="/js/darkmode-js.min.js"></script>
         
@@ -393,14 +394,16 @@ mjx-container[display="true"] + br {
         </script>
         
         
-            <div class="left-toc-container">
-                <nav id="toc" class="bs-docs-sidebar"></nav>
-            </div>
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
         
         <div class="paper">
+
             
-            
-            
+
             
                 <div class="shadow-drop-2-bottom paper-main">
                     
@@ -450,14 +453,14 @@ mjx-container[display="true"] + br {
             
         
     </ul>
-</div> 
-        
+</div>
+
                     
                     
 
                     
                     
-                    
+
                     <!--说明是文章post页面-->
                     
                         <div class="post-main">
@@ -486,7 +489,7 @@ mjx-container[display="true"] + br {
                     
                         &nbsp; | &nbsp;
                     
-                     <span>字数总计：244</span>
+                     <span>字数总计：243</span>
                 
                 
                     
@@ -514,19 +517,13 @@ mjx-container[display="true"] + br {
 <p>在Windows下，文件名和文件夹名字是大小写不敏感的，而在Linux下是大小写敏感的。</p>
 <ol>
 <li><p>在<code>YourBlogDir/.deploy_git/.git/config</code>下，设置Git不要忽略大小写。</p>
-<pre class="line-numbers language-none"><code class="language-none">[core]
-	....
-	ignorecase = false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[core]<br>	....<br>	ignorecase = false<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>清空部署端，以Git为例：</p>
-<pre class="line-numbers language-none"><code class="language-none">cd .deploy_git
-git rm -rf *
-git commit -m 'clean all file'
-git push<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">cd .deploy_git<br>git rm -rf *<br>git commit -m 'clean all file'<br>git push<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>重新渲染并上传</p>
-<pre class="line-numbers language-none"><code class="language-none">hexo clean
-hexo g -d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">hexo clean<br>hexo g -d<br></code></pre></td></tr></table></figure></li>
 </ol>
 </blockquote>
 </div>
@@ -589,9 +586,9 @@ hexo g -d<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 
 
 
-                                      
+
                     
-                    
+
                     <div class="footer">
     
         <span> 
@@ -704,7 +701,7 @@ hexo g -d<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
                 </div>
             
             
-                <!-- 回到顶部的按钮-->  
+                <!-- 回到顶部的按钮-->
                 <div class="progress-wrap shadow-drop-2-bottom">
                     <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
                         <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
@@ -714,3 +711,9 @@ hexo g -d<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
             
     </body>
 </html>
+<script src="/js/emojiHandler.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        wrapEmojis('.paper');
+    });
+</script>
